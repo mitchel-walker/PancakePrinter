@@ -2,6 +2,7 @@
 #instead of software-based time.sleep
 
 import pigpio
+import RPi.GPIO as GPIO
 from time import sleep
 
 
@@ -11,12 +12,30 @@ step_pin = 21
 cw = 1
 ccw = 0
 
+#remove warnings
+GPIO.setwarnings(False)#
+
+#set microstep tuple dictionary
+resolution = {'full':(0,0,0),
+            'half':(1,0,0),
+            '1/4':(0,1,0),
+            '1/8':(1,1,0),
+            '1/16':(0,0,1),
+            '1/32':(1,0,1)}
+
+#set microstep pins
+GPIO.setmode(GPIO.BCM)
+mode = (14,15,18)
+GPIO.setup(mode, GPIO.OUT)
+GPIO.output(mode, resolution['half'])
+
+
 #connect to pigpio daemon
 pi = pigpio.pi()
 
 #set duty cycle and frequency
 pi.set_PWM_dutycycle(step_pin, 128)
-pi.set_PWM_frequency(step_pin,20000)
+pi.set_PWM_frequency(step_pin,800)
 '''
 acceptable frequencies:
 1: 40000 20000 10000 8000 5000 4000 2500 2000 1600

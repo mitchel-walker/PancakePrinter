@@ -21,28 +21,37 @@ GPIO.output(dir_pin, cw)
 mode = (14,15,18)
 GPIO.setup(mode, GPIO.OUT)
 
+#set microstep tuple dictionary
+resolution = {'full':(0,0,0),
+            'half':(1,0,0),
+            '1/4':(0,1,0),
+            '1/8':(1,1,0),
+            '1/16':(0,0,1),
+            '1/32':(1,0,1)}
+
+
 #set output resolution
-GPIO.output(mode, (1,0,1))
+GPIO.output(mode, resolution['1/32'])
 
 step_count = steps_per_rev*32
 delay = 0.00005/32
 
 '''
-#loop through
-for i in range(step_count*100):
-	GPIO.output(step_pin, GPIO.HIGH)
-	sleep(delay)
-	GPIO.output(step_pin, GPIO.LOW)
+Full - 0,0,0
+Half - 1,0,0
+1/4
 '''
+
 while True:
         try:
+        
                 GPIO.output(step_pin, GPIO.HIGH)
                 sleep(delay)
                 GPIO.output(step_pin, GPIO.LOW)
-                
         except KeyboardInterrupt:
                 print("Keyboard Pressed")
                 break
         finally:
                 pass
+
         
