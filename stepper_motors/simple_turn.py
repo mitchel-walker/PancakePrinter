@@ -25,10 +25,24 @@ GPIO.setup(mode, GPIO.OUT)
 GPIO.output(mode, (1,0,1))
 
 step_count = steps_per_rev*32
-delay = 0.0001/32
+delay = 0.00005/32
 
+'''
 #loop through
 for i in range(step_count*100):
 	GPIO.output(step_pin, GPIO.HIGH)
 	sleep(delay)
 	GPIO.output(step_pin, GPIO.LOW)
+'''
+while True:
+        try:
+                GPIO.output(step_pin, GPIO.HIGH)
+                sleep(delay)
+                GPIO.output(step_pin, GPIO.LOW)
+                
+        except KeyboardInterrupt:
+                print("Keyboard Pressed")
+                break
+        finally:
+                pass
+        
