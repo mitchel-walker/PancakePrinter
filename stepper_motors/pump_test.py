@@ -21,13 +21,13 @@ resolution = {'full':(0,0,0),
             '1/8':(1,1,0),
             '1/16':(0,0,1),
             '1/32':(1,0,1)}
-
+speed = int(input("Enter Frequency (800-20000): "))
 
 #set microstep pins
 GPIO.setmode(GPIO.BCM)
 mode = (14,15,18)
 GPIO.setup(mode, GPIO.OUT)
-GPIO.output(mode, input("Enter Microstep Resolution (full, half, 1/4, 1/8, 1/16, 1/32: "))
+GPIO.output(mode, resolution[input("Enter Microstep Resolution (full, half, 1/4, 1/8, 1/16, 1/32): ")])
 
 
 #connect to pigpio daemon
@@ -35,7 +35,7 @@ pi = pigpio.pi()
 
 #set duty cycle and frequency
 pi.set_PWM_dutycycle(step_pin, 128)
-pi.set_PWM_frequency(step_pin,int(input("Enter Speed (800-20000): ")))
+pi.set_PWM_frequency(step_pin,speed)
 
 '''
 acceptable frequencies:
