@@ -63,16 +63,10 @@ class Motor():
 	#simple turn motor
 	def move(self, direction, freq, dist):
 		pi.set_PWM_dutycycle(self.step_pin, 128)
-<<<<<<< HEAD
                 pi.set_PWM_frequency(self.step_pin, freq)
                 GPIO.output(self.dir_pin, direction)
                 
 		#loop to turn motor
-=======
-		pi.set_PWM_frequency(self.step_pin, freq)
-
-		#for loop to turn motor
->>>>>>> c6c5d3f5524de05a33c46b89f5112b7ebfbcb2d1
 		while True:
 			try:
 				pass
