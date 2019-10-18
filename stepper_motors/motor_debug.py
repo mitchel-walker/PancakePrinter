@@ -19,15 +19,12 @@ pi = pigpio.pi()
 
 
 #create motor classes
-def Motor():
+class Motor():
 	def __init__(self, dir_pin, step_pin, mode):
 		self.dir_pin = dir_pin
 		self.step_pin = step_pin
 		self.mode = mode
 		self.spr = 200
-
-		#set mode pins
-		self.set_mode_pins()
 
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
@@ -43,10 +40,13 @@ def Motor():
 		#resolution mode
 		self.res_mode = self.res_dict['1/16']
 
+		#set mode pins
+		self.set_mode_pins()
+
 
 	def set_mode_pins(self):
-		GPIO.setup(mode, GPIO.OUT)
-		GPIO.output(mode, self.res_mode)
+		GPIO.setup(self.mode, GPIO.OUT)
+		GPIO.output(self.mode, self.res_mode)
 
 
 	#setters and getters for resolution
@@ -63,12 +63,13 @@ def Motor():
 	#simple turn motor
 	def move(self, direction, freq, dist):
 		pi.set_PWM_dutycycle(self.step_pin, 128)
-		pi.set_PWM_frequency(self.step_pin, freq)
-
-		#for loop to turn motor
-		for i in range(dist):
+                pi.set_PWM_frequency(self.step_pin, freq)
+                GPIO.output(self.dir_pin, direction)
+                
+		#loop to turn motor
+		while True:
 			try:
-				pi.write(self.dir_pin, direction)
+				pass
 				sleep(.1)
 			except KeyboardInterrupt:
 				print("Keyboard Pressed")
@@ -79,7 +80,7 @@ def Motor():
 		pi.stop()
 
 if __name__ == "__main__":
-	X = Motor(20, 21, (14,15,18), 1)
+	X = Motor(20, 21, (14,15,18))
 	X.move(1, 800, 1)
 
 '''
