@@ -9,11 +9,13 @@ from time import sleep
 #set pin numbers
 dir_pin = 20
 step_pin = 21
+
+#set cw and ccw values
 cw = 1
 ccw = 0
 
 #remove warnings
-GPIO.setwarnings(False)#
+GPIO.setwarnings(False)
 
 #set microstep tuple dictionary
 resolution = {'full':(0,0,0),
