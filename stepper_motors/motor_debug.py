@@ -66,9 +66,9 @@ def Motor():
 		pi.set_PWM_frequency(self.step_pin, freq)
 
 		#for loop to turn motor
-		for i in range(dist):
+		while True:
 			try:
-				pi.write(self.dir_pin, direction)
+				pass
 				sleep(.1)
 			except KeyboardInterrupt:
 				print("Keyboard Pressed")
