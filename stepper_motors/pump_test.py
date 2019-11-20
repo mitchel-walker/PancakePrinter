@@ -46,10 +46,10 @@ acceptable frequencies:
 8: 5000  2500  1250  1000 625  500  313  250  200
 10:4000  2000  1000  800  500  400  250  200  160
 '''
-
+count = 0
 try:
-	while True:
-		pi.write(dir_pin, cw)
+	while count < 10:
+		count += 1
 		sleep(.1)
 except KeyboardInterrupt:
 	print("Keyboard Pressed")
