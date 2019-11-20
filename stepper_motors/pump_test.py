@@ -56,9 +56,9 @@ micro_dict = {
 	"1/32":32
 }
 count = 0
-if 
+final = 0.1*freq/(micro_dict[micro_setting]*200)
 try:
-	while count < 10:
+	while count < final:
 		count += 1
 		sleep(.1)
 except KeyboardInterrupt:
