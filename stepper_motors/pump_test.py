@@ -56,7 +56,7 @@ micro_dict = {
 	"1/32":32
 }
 count = 0
-final = 0.1*freq/(micro_dict[micro_setting]*200)
+final = (micro_dict[micro_setting]*200*10)/freq
 try:
 	while count < final:
 		count += 1
