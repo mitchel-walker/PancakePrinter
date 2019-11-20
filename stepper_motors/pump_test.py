@@ -56,11 +56,11 @@ micro_dict = {
 	"1/32":32
 }
 count = 0
-final = (micro_dict[micro_setting]*200*10)/freq
+final = (micro_dict[micro_setting]*2000)/freq
 try:
 	while count < final:
 		count += 1
-		sleep(.1)
+		sleep(.099862)
 except KeyboardInterrupt:
 	print("Keyboard Pressed")
 finally:
