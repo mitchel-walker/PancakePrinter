@@ -34,9 +34,6 @@ GPIO.output(mode, resolution[micro_setting])
 #connect to pigpio daemon
 pi = pigpio.pi()
 
-#set duty cycle and frequency
-pi.set_PWM_dutycycle(step_pin, 128)
-pi.set_PWM_frequency(step_pin,freq)
 
 '''
 acceptable frequencies:
@@ -57,6 +54,11 @@ micro_dict = {
 }
 count = 0
 final = (micro_dict[micro_setting]*2000)/freq
+
+#set duty cycle and frequency
+pi.set_PWM_dutycycle(step_pin, 128)
+pi.set_PWM_frequency(step_pin,freq)
+
 try:
 	while count < final:
 		count += 1
