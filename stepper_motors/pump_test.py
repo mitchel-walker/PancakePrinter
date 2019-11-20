@@ -30,6 +30,9 @@ GPIO.setup(mode, GPIO.OUT)
 micro_setting = input("Enter Microstep Resolution (full, half, 1/4, 1/8, 1/16, 1/32): ")
 GPIO.output(mode, resolution[micro_setting])
 
+GPIO.setup(dir_pin, GPIO.OUT)
+GPIO.output(dir_pin,ccw)
+
 
 #connect to pigpio daemon
 pi = pigpio.pi()
