@@ -62,7 +62,7 @@ pi.set_PWM_frequency(step_pin,freq)
 try:
 	while count < final:
 		count += 1
-		sleep(.099862)
+		sleep(.1)
 except KeyboardInterrupt:
 	print("Keyboard Pressed")
 finally:
