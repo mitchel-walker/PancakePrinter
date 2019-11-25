@@ -84,11 +84,11 @@ class Motor():
 #create Pump class
 class Pump(Motor):
 	def __init__(self, att_dict):
-		super().__init__(dir_pin, step_pin, mode_pins)
+		super().__init__(att_dict)
 
 class Translation(Motor):
 	def __init__(self, att_dict):
-		super().__init__(dir_pin, step_pin, mode_pins)
+		super().__init__(att_dict)
 
 
 
