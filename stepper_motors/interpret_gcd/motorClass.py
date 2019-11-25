@@ -64,7 +64,7 @@ class Motor():
 	def move(self, dist, freq):
 		delay = 1/freq
 		#set number of pulses
-		num_pulses = dist*200*self.get_step_size()*motor.get_step_size()
+		num_pulses = dist*200*motor.get_step_size()/self.calib
 
 		for i in range(num_pulses):
 			gpio.output(self.step_pin, gpio.HIGH)
@@ -77,7 +77,7 @@ class Motor():
 
 
 class Printer():
-	def __init__(self):
+	def __init__(self, config_dict):
 		#the order is x, y, pump
 		self.motors = [Motor(config_dict[0]),Motor(config_dict[1]),Motor(config_dict[2])]
 		self.pos = [0,0]
@@ -99,5 +99,7 @@ if __name__ == "__main__":
 		text = re.sub(r"\s",'',f.read())
 	config_dict = json.loads(text)
 
-	test = Printer()
+	printer = Printer(config_dict)
+
+	printer.motors[0].move(2,1000)
 
