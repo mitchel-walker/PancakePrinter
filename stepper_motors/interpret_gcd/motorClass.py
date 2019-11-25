@@ -54,7 +54,7 @@ class Motor():
 
 
 	#simple turn motor
-	def move(self, direction, freq, dist):
+	def move(self, direction, freq, rotations):
 		pi.set_PWM_dutycycle(self.step_pin, 128)
 		pi.set_PWM_frequency(self.step_pin, freq)
 		GPIO.setup(self.dir_pin, GPIO.OUT)
@@ -84,6 +84,11 @@ class Pump(Motor):
 	def __init__(self, dir_pin, step_pin, mode_pins):
 		super().__init__(dir_pin, step_pin, mode_pins)
 
+class Translation(Motor):
+	def __init__(self, dir_pin, step_pin, mode_pins):
+		super().__init__(dir_pin, step_pin, mode_pins)
+
+
 if __name__ == "__main__":
 
 	#remove warnings
@@ -92,6 +97,6 @@ if __name__ == "__main__":
 	#set GPIO naming scheme
 	GPIO.setmode(GPIO.BCM)
 
-	test = Pump(1,2,(3,4,5))
-	print(test.get_resolution())
+	test_trans = Translation(1,2,(3,4,5))
+	test_pump = Pump(1,2,3(4,5,6))
 
