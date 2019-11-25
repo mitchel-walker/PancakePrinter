@@ -33,4 +33,8 @@
 		"m2":18
 	},
 	"calib":1.0
+},
+{
+	"name":"master",
+	"function":"printer"
 }]

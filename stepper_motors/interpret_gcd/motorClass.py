@@ -1,5 +1,5 @@
 #This script defines the motor class to be used for gcode interpretation
-import RPi.GPIO as GPIO
+import RPi.GPIO as gpio
 import json
 import re
 
@@ -38,9 +38,10 @@ class Motor():
 		self.set_mode_pins()
 
 
+	#setters and getters for mode pins
 	def set_mode_pins(self):
-		GPIO.setup(self.mode_pins, GPIO.OUT)
-		GPIO.output(self.mode_pins, self.res_mode)
+		gpio.setup(self.mode_pins, gpio.OUT)
+		gpio.output(self.mode_pins, self.res_mode)
 
 	def get_mode(self):
 		print(self.res_dict[self.resolution])
@@ -54,57 +55,30 @@ class Motor():
 	def get_resolution(self):
 		return self.resolution
 
+	#send up pulse and down pulse to step pins
+	def pulse_up(self):
+		gpio.output(self.step_pin, gpio.HIGH)
 
-	#simple turn motor
-	def move(self, direction, freq, rotations):
-		pi.set_PWM_dutycycle(self.step_pin, 128)
-		pi.set_PWM_frequency(self.step_pin, freq)
-		GPIO.setup(self.dir_pin, GPIO.OUT)
-		GPIO.output(self.dir_pin, direction)
+	def pulse_down(self):
+		gpio.output(self.step_pin, gpio.LOW)
 
-		#set count and limit vars
-		count = 0
-		limit = (self.step_size[self.resolution]*2000)/freq
-
-		#loop to turn motor
-		while count < limit:
-			try:
-				pass
-				sleep(.1)
-			except KeyboardInterrupt:
-				print("Keyboard Pressed")
-				break
-
-		#set duty cycle to zero and disconnect daemon
-		pi.set_PWM_dutycycle(self.step_pin, 0)
-		pi.stop()
-
-
-
-#create Pump class
-class Pump(Motor):
-	def __init__(self, att_dict):
-		super().__init__(att_dict)
-
-class Translation(Motor):
-	def __init__(self, att_dict):
-		super().__init__(att_dict)
-
+class Printer():
+	def __init__(self, **motors):
+		self.motors = motors
+		print(self.motors)
 
 
 if __name__ == "__main__":
 
 	#remove warnings
-	GPIO.setwarnings(False)
+	gpio.setwarnings(False)
 
-	#set GPIO naming scheme
-	GPIO.setmode(GPIO.BCM)
+	#set gpio naming scheme
+	gpio.setmode(gpio.BCM)
 
 	with open('config.json') as f:
 		text = re.sub(r"\s",'',f.read())
 	config_dict = json.loads(text)
 
-	
-	test_trans = Translation(config_dict[0])
-	test_pump = Pump(config_dict[2])
+	test = Printer()
 
