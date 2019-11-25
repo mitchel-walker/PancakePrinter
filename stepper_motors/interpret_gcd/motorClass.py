@@ -32,9 +32,6 @@ class Motor():
 
 		self.res_mode = self.res_dict[self.resolution]
 
-		#set resolution
-		self.set_resolution()
-
 		#set mode pins
 		self.set_mode_pins()
 
@@ -48,7 +45,6 @@ class Motor():
 
 	#setters and getters for resolution
 	def set_resolution(self):
-		self.resolution = res
 		self.res_mode = self.res_dict[self.resolution]
 		self.set_mode_pins()
 
