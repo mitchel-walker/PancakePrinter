@@ -109,5 +109,5 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.motors[0].move(2,1000)
+	printer.motors[0].move(2,5000)
 
