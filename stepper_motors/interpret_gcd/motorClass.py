@@ -1,14 +1,15 @@
 #This script defines the motor class to be used for gcode interpretation
 import RPi.GPIO as GPIO
 import json
+import re
 
 #create motor classes
 class Motor():
 	def __init__(self, att_dict):
-		self.dir_pin = dir_pin
-		self.step_pin = step_pin
-		self.mode_pins = mode_pins
-		self.spr = 200
+		self.dir_pin = att_dict["pins"]["dir"]
+		self.step_pin = att_dict["pins"]["step"]
+		self.mode_pins = (att_dict["pins"]["m0"],att_dict["pins"]["m1"],att_dict["pins"]["m2"])
+		self.dpr = att_dict["dpr"]
 
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
@@ -100,12 +101,10 @@ if __name__ == "__main__":
 	GPIO.setmode(GPIO.BCM)
 
 	with open('config.json') as f:
-		config_dict = json.dumps(f.read().strip())
-	print(config_dict)
+		text = re.sub(r"\s",'',f.read())
+	config_dict = json.loads(text)
 
-	'''
-
-	test_trans = Translation(1,2,(3,4,5))
-	test_pump = Pump(1,2,(4,5,6))
-	'''
+	
+	test_trans = Translation(config_dict[0])
+	test_pump = Pump(config_dict[2])
 
