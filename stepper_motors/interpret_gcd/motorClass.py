@@ -30,6 +30,9 @@ class Motor():
 		#resolution string/key
 		self.resolution = 'half'
 
+		#set resolution
+		self.set_resolution()
+
 		#set mode pins
 		self.set_mode_pins()
 
@@ -42,9 +45,9 @@ class Motor():
 		print(self.res_dict[self.resolution])
 
 	#setters and getters for resolution
-	def set_resolution(self, res):
+	def set_resolution(self, res = self.resolution):
 		self.resolution = res
-		self.res_mode = self.res_dict[res]
+		self.res_mode = self.res_dict[self.resolution]
 		self.set_mode_pins()
 
 
@@ -90,7 +93,7 @@ if __name__ == "__main__":
 
 	#set GPIO naming scheme
 	GPIO.setmode(GPIO.BCM)
-	
+
 	test = Pump(1,2,(3,4,5))
 	print(test.get_resolution())
 
