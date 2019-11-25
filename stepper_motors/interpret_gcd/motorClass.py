@@ -9,7 +9,7 @@ class Motor():
 		self.dir_pin = att_dict["pins"]["dir"]
 		self.step_pin = att_dict["pins"]["step"]
 		self.mode_pins = (att_dict["pins"]["m0"],att_dict["pins"]["m1"],att_dict["pins"]["m2"])
-		self.dpr = att_dict["dpr"]
+		self.calib = att_dict["calib"]
 
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
