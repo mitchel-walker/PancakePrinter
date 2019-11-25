@@ -1,7 +1,9 @@
 #This script defines the motor class to be used for gcode interpretation
+from time import sleep
 import RPi.GPIO as gpio
 import json
 import re
+import ray
 
 #create motor classes
 class Motor():
@@ -46,6 +48,10 @@ class Motor():
 	def get_mode(self):
 		print(self.res_dict[self.resolution])
 
+	#getter for step size
+	def get_step_size(self):
+		return self.step_size[self.resolution]
+
 	#setters and getters for resolution
 	def set_resolution(self):
 		self.res_mode = self.res_dict[self.resolution]
@@ -55,17 +61,31 @@ class Motor():
 	def get_resolution(self):
 		return self.resolution
 
-	#send up pulse and down pulse to step pins
-	def pulse_up(self):
-		gpio.output(self.step_pin, gpio.HIGH)
+	#move a single motor
+	def move(self, dist, freq):
+		delay = 1/freq
+		#set number of pulses
+		num_pulses = dist*200*self.get_step_size()*motor.get_step_size()
 
-	def pulse_down(self):
-		gpio.output(self.step_pin, gpio.LOW)
+		for i in range(num_pulses):
+			gpio.output(self.step_pin, gpio.HIGH)
+			sleep(delay)
+			gpio.output(self.step_pin, gpio.LOW)
+			sleep(delay)
+
+
+
+
 
 class Printer():
-	def __init__(self, **motors):
-		self.motors = motors
-		print(self.motors)
+	def __init__(self):
+		#the order is x, y, pump
+		self.motors = [Motor(config_dict[0]),Motor(config_dict[1]),Motor(config_dict[2])]
+		self.pos = [0,0]
+	
+	def go(self, end_x, end_y, speed):
+		#function to move x and y motors simultaneously
+		return
 
 
 if __name__ == "__main__":
