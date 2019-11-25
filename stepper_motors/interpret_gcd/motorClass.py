@@ -99,6 +99,14 @@ if __name__ == "__main__":
 		text = re.sub(r"\s",'',f.read())
 	config_dict = json.loads(text)
 
+
+	output_pins = []
+	for dc in config_dict:
+		if "pins" in dc:
+			for key in dc["pins"]:
+				output_pins.append(dc["pins"][key])
+	gpio.setup(output_pins,gpio.OUT)
+
 	printer = Printer(config_dict)
 
 	printer.motors[0].move(2,1000)
