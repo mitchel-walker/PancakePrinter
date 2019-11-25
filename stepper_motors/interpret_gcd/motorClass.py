@@ -99,5 +99,5 @@ if __name__ == "__main__":
 		text = re.sub(r"\s",'',f.read())
 	config_dict = json.loads(text)
 
-	test = Printer(x = Motor(config_dict[0]), y = Motor(config_dict[1]), p = Motor(config_dict[2]))
+	test = Printer()
 
