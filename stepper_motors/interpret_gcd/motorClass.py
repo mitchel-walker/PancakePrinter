@@ -100,7 +100,7 @@ if __name__ == "__main__":
 	GPIO.setmode(GPIO.BCM)
 
 	with open('config.json') as f:
-		config_dict = json.dumps(f.read())
+		config_dict = json.dumps(f.read().strip())
 	print(config_dict)
 
 	'''
