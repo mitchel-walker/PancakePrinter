@@ -1,0 +1,35 @@
+[{
+	"name":"x",
+	"function":"translation",
+	"pins":{
+		"step":21,
+		"dir":20,
+		"m0":14,
+		"m1":15,
+		"m2":18
+	},
+	"dpr":2.0
+},
+{
+	"name":"y",
+	"function":"translation",
+	"pins":{
+		"step":6,
+		"dir":5,
+		"m0":14,
+		"m1":15,
+		"m2":18
+	},
+	"dpr":4.0
+},
+{
+	"name":"p",
+	"function":"pump",
+	"pins":{
+		"step":24,
+		"dir":23,
+		"m0":14,
+		"m1":15,
+		"m2":18
+	},
+}]

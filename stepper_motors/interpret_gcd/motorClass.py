@@ -98,5 +98,5 @@ if __name__ == "__main__":
 	GPIO.setmode(GPIO.BCM)
 
 	test_trans = Translation(1,2,(3,4,5))
-	test_pump = Pump(1,2,3(4,5,6))
+	test_pump = Pump(1,2,3,(4,5,6))
 
