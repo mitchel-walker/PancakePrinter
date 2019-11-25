@@ -3,7 +3,6 @@ from time import sleep
 import RPi.GPIO as gpio
 import json
 import re
-import ray
 
 #create motor classes
 class Motor():
