@@ -7,8 +7,6 @@ from time import sleep
 
 
 #set pin numbers
-dir_pin = 23
-step_pin = 24
 dir_pin = 20
 step_pin = 21
 
