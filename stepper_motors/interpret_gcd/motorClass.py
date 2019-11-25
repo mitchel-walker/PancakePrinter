@@ -80,5 +80,5 @@ if __name__ == "__main__":
 		text = re.sub(r"\s",'',f.read())
 	config_dict = json.loads(text)
 
-	test = Printer()
+	test = Printer(test = 1, test2 = 2, test3 = 3)
 
