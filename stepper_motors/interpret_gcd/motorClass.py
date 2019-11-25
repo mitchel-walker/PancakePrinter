@@ -76,10 +76,14 @@ class Motor():
 		pi.set_PWM_dutycycle(self.step_pin, 0)
 		pi.stop()
 
-		
+
 
 #create Pump class
 class Pump(Motor):
 	def __init__(self, dir_pin, step_pin, mode_pins):
 		super().__init__(dir_pin, step_pin, mode_pins)
+
+if __name__ == "__main__":
+	test = Pump(1,2,(3,4,5))
+	print(test.get_resolution())
 
