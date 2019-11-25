@@ -1,9 +1,10 @@
 #This script defines the motor class to be used for gcode interpretation
 import RPi.GPIO as GPIO
+import json
 
 #create motor classes
 class Motor():
-	def __init__(self, dir_pin, step_pin, mode_pins):
+	def __init__(self, att_dict):
 		self.dir_pin = dir_pin
 		self.step_pin = step_pin
 		self.mode_pins = mode_pins
@@ -81,12 +82,13 @@ class Motor():
 
 #create Pump class
 class Pump(Motor):
-	def __init__(self, dir_pin, step_pin, mode_pins):
+	def __init__(self, att_dict):
 		super().__init__(dir_pin, step_pin, mode_pins)
 
 class Translation(Motor):
-	def __init__(self, dir_pin, step_pin, mode_pins):
+	def __init__(self, att_dict):
 		super().__init__(dir_pin, step_pin, mode_pins)
+
 
 
 if __name__ == "__main__":
@@ -97,6 +99,12 @@ if __name__ == "__main__":
 	#set GPIO naming scheme
 	GPIO.setmode(GPIO.BCM)
 
+	with open('config.json') as f:
+		config_dict = json.dumps(f.read())
+
+	'''
+
 	test_trans = Translation(1,2,(3,4,5))
-	test_pump = Pump(1,2,3,(4,5,6))
+	test_pump = Pump(1,2,(4,5,6))
+	'''
 
