@@ -101,6 +101,7 @@ if __name__ == "__main__":
 
 	with open('config.json') as f:
 		config_dict = json.dumps(f.read())
+	print(config_dict)
 
 	'''
 
