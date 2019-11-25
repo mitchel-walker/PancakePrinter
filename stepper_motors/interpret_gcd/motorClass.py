@@ -84,6 +84,13 @@ class Pump(Motor):
 		super().__init__(dir_pin, step_pin, mode_pins)
 
 if __name__ == "__main__":
+
+	#remove warnings
+	GPIO.setwarnings(False)
+
+	#set GPIO naming scheme
+	GPIO.setmode(GPIO.BCM)
+	
 	test = Pump(1,2,(3,4,5))
 	print(test.get_resolution())
 
