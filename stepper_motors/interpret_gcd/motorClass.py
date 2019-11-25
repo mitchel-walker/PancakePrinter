@@ -64,7 +64,7 @@ class Motor():
 	def move(self, dist, freq):
 		delay = 1/freq
 		#set number of pulses
-		num_pulses = dist*200*self.get_step_size()/self.calib
+		num_pulses = int(dist*200*self.get_step_size()/self.calib)
 
 		for i in range(num_pulses):
 			gpio.output(self.step_pin, gpio.HIGH)
