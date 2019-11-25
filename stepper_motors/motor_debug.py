@@ -20,10 +20,10 @@ pi = pigpio.pi()
 
 #create motor classes
 class Motor():
-	def __init__(self, dir_pin, step_pin, mode):
+	def __init__(self, dir_pin, step_pin, mode_pins):
 		self.dir_pin = dir_pin
 		self.step_pin = step_pin
-		self.mode = mode
+		self.mode_pins = mode_pins
 		self.spr = 200
 
 		#resolution dictionairy
@@ -34,19 +34,29 @@ class Motor():
 		'1/16':(0,0,1),
 		'1/32':(1,0,1)}
 
-		#resolution string/key
-		self.resolution = '1/16'
+		#micro step size dictionary
+		self.step_size = {
+			"full":1,
+			"half":2,
+			"1/4":4,
+			"1/8":8,
+			"1/16":16,
+			"1/32":32
+		}
 
-		#resolution mode
-		self.res_mode = self.res_dict['1/16']
+		#resolution string/key
+		self.resolution = 'half'
 
 		#set mode pins
 		self.set_mode_pins()
 
 
-	def set_mode_pins(self):
-		GPIO.setup(self.mode, GPIO.OUT)
-		GPIO.output(self.mode, self.res_mode)
+	def set_mode(self):
+		GPIO.setup(self.mode_pins, GPIO.OUT)
+		GPIO.output(self.mode_pins, self.res_mode)
+
+	def get_mode(self):
+		print(self.res_dict[self.resolution])
 
 
 	#setters and getters for resolution
@@ -67,8 +77,12 @@ class Motor():
 		GPIO.setup(self.dir_pin, GPIO.OUT)
 		GPIO.output(self.dir_pin, direction)
 
+		#set count and limit vars
+		count = 0
+		limit = (self.step_size[self.resolution]*2000)/freq
+
 		#loop to turn motor
-		while True:
+		while count < limit:
 			try:
 				pass
 				sleep(.1)
@@ -80,9 +94,15 @@ class Motor():
 		pi.set_PWM_dutycycle(self.step_pin, 0)
 		pi.stop()
 
+
 if __name__ == "__main__":
+	#set motor classes
 	X = Motor(20, 21, (14,15,18))
+	Y = Motor(5,6,(14,15,18))
+	E = Motor(23,24,(14,15,18))
+
 	X.move(1, 800, 1)
+	Y.move(1, 800, 1)
 
 '''
 acceptable frequencies:
