@@ -93,7 +93,7 @@ class Printer():
 		self.acc = config_dict["acceleration"]
 
 		#initial position
-		self.pos = [0,0]
+		self.pos = [0.0, 0.0]
 	
 
 	def go(self, end_x, end_y, freq):
