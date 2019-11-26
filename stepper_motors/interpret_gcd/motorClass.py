@@ -1,4 +1,5 @@
 #This script defines the motor class to be used for gcode interpretation
+from multiprocessing import Process
 from time import sleep
 import RPi.GPIO as gpio
 import json
@@ -61,8 +62,13 @@ class Motor():
 		return self.resolution
 
 	#move a single motor
-	def move(self, dist, freq):
+	def move(self, dist, freq, direct):
+		#set direction pin
+		gpio.outpu(self.dir_pin, direct)
+
+		#set delay time
 		delay = 1/freq
+
 		#set number of pulses
 		num_pulses = int(dist*200*self.get_step_size()/self.calib)
 
@@ -78,13 +84,48 @@ class Motor():
 
 class Printer():
 	def __init__(self, config_dict):
-		#the order is x, y, pump
-		self.motors = [Motor(config_dict[0]),Motor(config_dict[1]),Motor(config_dict[2])]
+		#Initialize Motor Object
+		self.x = Motor(config_dict[0])
+		self.y = Motor(config_dict[1])
+		self.pump = Motor(config_dict[2])
+
+		#acceleration time
+		self.acc = config_dict["acceleration"]
+
+		#initial position
 		self.pos = [0,0]
 	
-	def go(self, end_x, end_y, speed):
+
+	def go(self, end_x, end_y, freq):
 		#function to move x and y motors simultaneously
-		return
+
+		#determine direction and distance of x and y
+		if end_x > self.pos[0]:
+			dir_x = 1
+			dist_x = end_x - self.pos[0]
+		else:
+			dir_x = 0
+			dist_x = self.pos[0] - end_x
+
+		if end_y > self.pos[1]:
+			dir_y = 1
+			dist_y = end_y - self.pos[1]
+		else:
+			dir_y = 0
+			dist_y = self.pos[1] - end_y
+
+		#establish processes
+		move_x = Process(target = self.x.move(dist_x, freq, dist_x))
+		move_y = Process(target = self.y.move(dist_y, freq, dist_y))
+
+		#run processes simultaneously
+		move_x.start()
+		move_y.start()
+
+		#reset position
+		self.pos = [end_x, end_y]
+
+
 
 
 if __name__ == "__main__":
@@ -109,5 +150,5 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.motors[0].move(2,5000)
+	printer.go(10,10,5000)
 
