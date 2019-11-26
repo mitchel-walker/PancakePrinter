@@ -90,7 +90,7 @@ class Printer():
 		self.pump = Motor(config_dict[2])
 
 		#acceleration time
-		self.acc = config_dict["acceleration"]
+		self.acc = config_dict[3]["acceleration"]
 
 		#initial position
 		self.pos = [0.0, 0.0]
