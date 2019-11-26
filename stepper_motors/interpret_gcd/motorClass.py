@@ -64,7 +64,7 @@ class Motor():
 	#move a single motor
 	def move(self, dist, freq, direct):
 		#set direction pin
-		gpio.outpu(self.dir_pin, direct)
+		gpio.output(self.dir_pin, direct)
 
 		#set delay time
 		delay = 1/freq
