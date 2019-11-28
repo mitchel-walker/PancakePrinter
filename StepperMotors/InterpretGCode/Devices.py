@@ -121,15 +121,10 @@ class Printer():
 		#determine the longest time either motor will take to go the distance
 		max_time = max((dist_x*60/self.x.max_spd),(dist_y*60/self.y.max_spd))
 
-		#set frequency for each motor
-		freq_x = self.x.get_step_size()/max_time
-		freq_y = self.y.get_step_size()/max_time
 
-
-		
 		#run processes
-		self.x.move(dist_x, freq_x, dir_x)
-		self.y.move(dist_y, freq_x, dir_y)
+		self.x.move(dist_x, max_time, dir_x)
+		self.y.move(dist_y, max_time, dir_y)
 
 		#reset position
 		self.pos = [end_x, end_y]
