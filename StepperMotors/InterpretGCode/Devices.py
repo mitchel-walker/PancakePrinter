@@ -120,8 +120,8 @@ class Printer():
 		max_time = max((dist_x*60/self.x.max_spd),(dist_y*60/self.y.max_spd))
 
 		#set frequency for each motor
-		freq_x = max_time/self.x.get_step_size()
-		freq_y = max_time/self.y.get_step_size()
+		freq_x = self.x.get_step_size()/max_time
+		freq_y = self.y.get_step_size()/max_time
 
 		print(freq_x,freq_y)
 
