@@ -7,7 +7,7 @@ import re
 
 
 def run(printer, gcd_file):
-	for command in yield_commands:
+	for command in yield_commands(gcd_file):
 		if command[0] == "G00":
 			printer.go(command[1][1:],command[2][2:])
 
