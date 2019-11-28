@@ -117,7 +117,7 @@ class Printer():
 			dist_y = self.pos[1] - end_y
 
 		#determine the longest time either motor will take to go the distance
-		max_time = max((dist_x*60/x.max_spd),(dist_y*60/y.max_spd))
+		max_time = max((dist_x*60/self.x.max_spd),(dist_y*60/self.y.max_spd))
 
 		#set frequency for each motor
 		freq_x = max_time/self.x.get_step_size()
