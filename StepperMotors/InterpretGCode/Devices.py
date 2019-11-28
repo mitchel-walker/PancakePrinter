@@ -71,7 +71,7 @@ class Motor():
 		#set number of pulses
 		num_pulses = int((dist*200*self.get_step_size())/self.calib)
 
-		#set delay time (inverse frequency)
+		#set delay time (inverse frequency) - delay time is waited twice for each pulse
 		delay = sec/(num_pulses*2)
 
 		for i in range(num_pulses):
@@ -155,5 +155,5 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.go(10,10)
+	printer.x.move(20,5,1)
 
