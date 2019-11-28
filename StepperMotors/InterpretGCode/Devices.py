@@ -69,7 +69,7 @@ class Motor():
 		gpio.output(self.dir_pin, direct)
 
 		#set number of pulses
-		num_pulses = int(dist*200/(self.calib*self.get_step_size()))
+		num_pulses = int((dist*200)/(self.calib*self.get_step_size()))
 
 		#set delay time (inverse frequency)
 		delay = sec/num_pulses
