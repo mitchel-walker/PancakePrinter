@@ -9,7 +9,7 @@
 		"m2":18
 	},
 	"calib":2.0,
-	"max_speed":4620
+	"max_speed":2000
 },
 {
 	"name":"y",
@@ -22,7 +22,7 @@
 		"m2":18
 	},
 	"calib":4.0,
-	"max_speed": 4620
+	"max_speed":2000
 },
 {
 	"name":"p",
@@ -35,7 +35,7 @@
 		"m2":18
 	},
 	"calib":1.0,
-	"max_speed":4620
+	"max_speed":2000
 },
 {
 	"name":"master",
