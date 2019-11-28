@@ -64,15 +64,15 @@ class Motor():
 		return self.resolution
 
 	#move a single motor
-	def move(self, dist, freq, direct):
+	def move(self, dist, sec, direct):
 		#set direction pin
 		gpio.output(self.dir_pin, direct)
 
-		#set delay time
-		delay = 1/freq
-
 		#set number of pulses
-		num_pulses = int(dist*200*self.get_step_size()/self.calib)
+		num_pulses = int(dist*200/(self.calib*sec*self.get_step_size()))
+
+		#set delay time (inverse frequency)
+		delay = sec/num_pulses
 
 		for i in range(num_pulses):
 			gpio.output(self.step_pin, gpio.HIGH)
@@ -116,6 +116,8 @@ class Printer():
 			dir_y = 0
 			dist_y = self.pos[1] - end_y
 
+		print(self.x.max_speed, self.y.max_speed)
+
 		#determine the longest time either motor will take to go the distance
 		max_time = max((dist_x*60/self.x.max_spd),(dist_y*60/self.y.max_spd))
 
@@ -123,7 +125,6 @@ class Printer():
 		freq_x = self.x.get_step_size()/max_time
 		freq_y = self.y.get_step_size()/max_time
 
-		print(freq_x,freq_y)
 
 		
 		#run processes
@@ -161,5 +162,5 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.go(10,10)
+	printer.x.move(4,1,1)
 
