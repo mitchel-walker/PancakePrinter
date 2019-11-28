@@ -92,10 +92,9 @@ class Printer():
 
 		#initial position
 		self.pos = [0.0, 0.0]
-	
 
-	def go(self, end_x, end_y):
-		#function to move x and y motors simultaneously
+	def get_params(end_x,end_y):
+		#returns 2d tuple of (distance, time, direction) for ((x),(y))
 
 		#determine direction and distance of x and y
 		if end_x > self.pos[0]:
@@ -115,9 +114,19 @@ class Printer():
 		#determine the longest time either motor will take to go the distance
 		max_time = max((dist_x*60/self.x.max_spd),(dist_y*60/self.y.max_spd))
 
+		return ((dist_x, max_time, dist_x), (dist_y, max_time, dist_y))
+	
+
+
+	def go(self, end_x, end_y):
+		#function to move x and y motors simultaneously
+
+		#get parameters
+		params = self.get_params(end_x, end_y)
+
 		#initialize processes
-		move_x = Process(target = self.x.move, args = (dist_x, max_time, dir_x))
-		move_y = Process(target = self.y.move, args = (dist_y, max_time, dir_y))
+		move_x = Process(target = self.x.move, args = params[0])
+		move_y = Process(target = self.y.move, args = params[1])
 
 		#run processes
 		move_x.start()
