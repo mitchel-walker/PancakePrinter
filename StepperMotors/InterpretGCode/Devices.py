@@ -115,6 +115,9 @@ class Printer():
 			dir_y = 0
 			dist_y = self.pos[1] - end_y
 
+		#determine the longest time either motor will take to go the distance
+
+
 		#run processes
 		self.x.move(dist_x, freq, dist_x)
 		self.y.move(dist_y, freq, dist_y)
@@ -149,6 +152,6 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.x.move(2,1000,1)
+	printer.x.move(2,1000,0)
 	printer.y.move(4,1000,1)
 
