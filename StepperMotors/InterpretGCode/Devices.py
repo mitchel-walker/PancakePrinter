@@ -13,6 +13,7 @@ class Motor():
 		self.step_pin = att_dict["pins"]["step"]
 		self.mode_pins = (att_dict["pins"]["m0"],att_dict["pins"]["m1"],att_dict["pins"]["m2"])
 		self.calib = att_dict["calib"]
+		self.max_spd = att_dict["max_speed"]
 
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
@@ -33,7 +34,7 @@ class Motor():
 		}
 
 		#resolution string/key
-		self.resolution = 'half'
+		self.resolution = '1/32'
 
 		self.res_mode = self.res_dict[self.resolution]
 
@@ -116,11 +117,14 @@ class Printer():
 			dist_y = self.pos[1] - end_y
 
 		#determine the longest time either motor will take to go the distance
+		max_time = max((dist_x*60/x.max_spd),(dist_y*60/y.max_spd))
 
+		#set frequency for each motor
+		freq_x = max_time/x.get_step_size()
 
 		#run processes
-		self.x.move(dist_x, freq, dist_x)
-		self.y.move(dist_y, freq, dist_y)
+		self.x.move(dist_x, freq_x, dist_x)
+		self.y.move(dist_y, freq_x, dist_y)
 
 		#reset position
 		self.pos = [end_x, end_y]
