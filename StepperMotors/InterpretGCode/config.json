@@ -35,7 +35,7 @@
 		"m2":18
 	},
 	"calib":1.0,
-	"max_speed":
+	"max_speed":10
 },
 {
 	"name":"master",
