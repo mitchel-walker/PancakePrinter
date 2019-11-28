@@ -124,6 +124,9 @@ class Printer():
 		#get parameters
 		params = self.get_params(end_x, end_y)
 
+
+		print(params[0],params[1])
+
 		#initialize processes
 		move_x = Process(target = self.x.move, args = params[0])
 		move_y = Process(target = self.y.move, args = params[1])
