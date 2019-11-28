@@ -98,7 +98,7 @@ class Printer():
 		self.pos = [0.0, 0.0]
 	
 
-	def go(self, end_x, end_y, freq):
+	def go(self, end_x, end_y):
 		#function to move x and y motors simultaneously
 
 		#determine direction and distance of x and y
@@ -157,6 +157,5 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.x.move(2,1000,0)
-	printer.y.move(4,1000,1)
+	self.go(10,10)
 
