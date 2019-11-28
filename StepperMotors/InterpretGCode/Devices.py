@@ -78,7 +78,7 @@ class Motor():
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			sleep(delay)
-		print(self.name + " pinged")
+			print(self.name + " pinged")
 
 
 
