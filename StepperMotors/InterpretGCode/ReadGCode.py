@@ -90,6 +90,6 @@ def yield_commands(file):
 		
 
 if __name__ == "__main__":
-	for command in yield_commands("../g_code/B_emoji.gcode"):
+	for command in yield_commands("../GCode/B_emoji.gcode"):
 		print(command)
 	
