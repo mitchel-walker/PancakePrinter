@@ -22,7 +22,7 @@
 		"m2":18
 	},
 	"calib":4.0,
-	"max_speed":
+	"max_speed": 10
 },
 {
 	"name":"p",
