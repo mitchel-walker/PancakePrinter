@@ -116,8 +116,6 @@ class Printer():
 			dir_y = 0
 			dist_y = self.pos[1] - end_y
 
-		print(self.x.max_speed, self.y.max_speed)
-
 		#determine the longest time either motor will take to go the distance
 		max_time = max((dist_x*60/self.x.max_spd),(dist_y*60/self.y.max_spd))
 
