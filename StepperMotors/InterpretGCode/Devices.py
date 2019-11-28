@@ -151,5 +151,5 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.go(10,10)
+	printer.go(8,8)
 
