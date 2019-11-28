@@ -34,7 +34,7 @@ class Motor():
 		}
 
 		#resolution string/key
-		self.resolution = 'full'
+		self.resolution = '1/32'
 
 		self.res_mode = self.res_dict[self.resolution]
 
@@ -48,7 +48,7 @@ class Motor():
 		gpio.output(self.mode_pins, self.res_mode)
 
 	def get_mode(self):
-		print(self.res_dict[self.resolution])
+		return self.res_dict[self.resolution]
 
 	#getter for step size
 	def get_step_size(self):
@@ -58,10 +58,6 @@ class Motor():
 	def set_resolution(self):
 		self.res_mode = self.res_dict[self.resolution]
 		self.set_mode_pins()
-
-
-	def get_resolution(self):
-		return self.resolution
 
 	#move a single motor
 	def move(self, dist, sec, direct):
