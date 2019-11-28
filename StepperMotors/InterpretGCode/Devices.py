@@ -162,5 +162,5 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.x.move(4,1,1)
+	printer.x.move(20,5,1)
 
