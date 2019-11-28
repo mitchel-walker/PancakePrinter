@@ -120,7 +120,7 @@ class Printer():
 		move_y = Process(target = self.y.move, args = (dist_y, max_time, dir_y))
 
 		#run processes
-		move_y.start()
+		move_x.start()
 		move_y.start()
 
 		#reset position
