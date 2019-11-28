@@ -70,6 +70,10 @@ class Motor():
 		#set delay time (inverse frequency) - delay time is waited twice for each pulse
 		delay = sec/(num_pulses*2)
 
+
+		print(self.name + ' ' + str(1/delay))
+		
+
 		for i in range(num_pulses):
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
@@ -92,6 +96,7 @@ class Printer():
 
 		#initial position
 		self.pos = [0.0, 0.0]
+
 
 	def get_params(self, end_x,end_y):
 		#returns 2d tuple of (distance, time, direction) for ((x),(y))
@@ -117,15 +122,11 @@ class Printer():
 		return ((dist_x, max_time, dir_x), (dist_y, max_time, dir_y))
 	
 
-
 	def go(self, end_x, end_y):
 		#function to move x and y motors simultaneously
 
 		#get parameters
 		params = self.get_params(end_x, end_y)
-
-
-		print(params[0],params[1])
 
 		#initialize processes
 		move_x = Process(target = self.x.move, args = params[0])
