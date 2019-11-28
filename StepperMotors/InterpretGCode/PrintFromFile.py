@@ -9,7 +9,8 @@ import re
 def run(printer, gcd_file):
 	for command in yield_commands(gcd_file):
 		if len(command) > 0 and command[0] == "G00":
-			printer.go(eval(command[1][1:]), eval(command[2][2:]))
+			printer.go(eval(command[1][1:]), eval(command[2][1:]))
+
 
 if __name__ == "__main__":
 	#remove warnings
