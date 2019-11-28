@@ -72,7 +72,7 @@ class Motor():
 
 
 		print(self.name + ' ' + str(1/delay))
-		
+
 
 		for i in range(num_pulses):
 			gpio.output(self.step_pin, gpio.HIGH)
