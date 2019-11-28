@@ -9,7 +9,7 @@
 		"m2":18
 	},
 	"calib":2.0,
-	"max_speed":2000
+	"max_speed":1000
 },
 {
 	"name":"y",
