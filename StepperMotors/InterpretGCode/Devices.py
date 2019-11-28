@@ -125,14 +125,14 @@ class Printer():
 
 		print(freq_x,freq_y)
 
-		'''
+		
 		#run processes
 		self.x.move(dist_x, freq_x, dir_x)
 		self.y.move(dist_y, freq_x, dir_y)
 
 		#reset position
 		self.pos = [end_x, end_y]
-		'''
+		
 
 
 
