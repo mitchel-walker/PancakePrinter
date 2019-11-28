@@ -72,7 +72,7 @@ class Motor():
 		num_pulses = int((dist*200*self.get_step_size())/self.calib)
 
 		#set delay time (inverse frequency)
-		delay = sec/num_pulses
+		delay = sec/(num_pulses*2)
 
 		for i in range(num_pulses):
 			gpio.output(self.step_pin, gpio.HIGH)
@@ -162,5 +162,5 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.x.move(20, 2,1)
+	printer.x.move(20, 2, 1)
 
