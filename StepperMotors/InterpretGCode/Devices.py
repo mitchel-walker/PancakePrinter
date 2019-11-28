@@ -8,6 +8,7 @@ import re
 #create motor classes
 class Motor():
 	def __init__(self, att_dict):
+		self.name = att_dict["name"]
 		self.dir_pin = att_dict["pins"]["dir"]
 		self.step_pin = att_dict["pins"]["step"]
 		self.mode_pins = (att_dict["pins"]["m0"],att_dict["pins"]["m1"],att_dict["pins"]["m2"])
@@ -77,6 +78,7 @@ class Motor():
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			sleep(delay)
+		print(self.name + " pinged")
 
 
 
