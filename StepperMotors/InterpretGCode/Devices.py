@@ -34,7 +34,7 @@ class Motor():
 		}
 
 		#resolution string/key
-		self.resolution = '1/32'
+		self.resolution = 'half'
 
 		self.res_mode = self.res_dict[self.resolution]
 
@@ -121,10 +121,11 @@ class Printer():
 
 		#set frequency for each motor
 		freq_x = max_time/x.get_step_size()
+		freq_y = max_time/y.get_step_size()
 
 		#run processes
-		self.x.move(dist_x, freq_x, dist_x)
-		self.y.move(dist_y, freq_x, dist_y)
+		self.x.move(dist_x, freq_x, dir_x)
+		self.y.move(dist_y, freq_x, dir_y)
 
 		#reset position
 		self.pos = [end_x, end_y]
