@@ -116,13 +116,9 @@ class Printer():
 			dir_y = 0
 			dist_y = self.pos[1] - end_y
 
-		#establish processes
-		move_x = Process(target = self.x.move(dist_x, freq, dist_x))
-		move_y = Process(target = self.y.move(dist_y, freq, dist_y))
-
-		#run processes simultaneously
-		move_x.start()
-		move_y.start()
+		#run processes
+		self.x.move(dist_x, freq, dist_x)
+		self.y.move(dist_y, freq, dist_y)
 
 		#reset position
 		self.pos = [end_x, end_y]
