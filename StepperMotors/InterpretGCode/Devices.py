@@ -76,7 +76,7 @@ class Motor():
 
 		#start pwm and sleep
 		pulses.start(50)
-		sleep()
+		sleep(sec)
 		pulses.stop()
 		#when loop exits stop the pwm
 
