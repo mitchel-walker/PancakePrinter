@@ -76,7 +76,7 @@ class Motor():
 		#start pwm and while loop
 		i = 0
 		pulses.start(50)
-		while count < limit:
+		while i < limit:
 			sleep(0.01)
 			i += 1
 
