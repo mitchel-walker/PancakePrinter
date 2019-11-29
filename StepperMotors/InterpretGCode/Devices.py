@@ -74,7 +74,7 @@ class Motor():
 		pulses = gpio.PWM(self.step_pin, freq)
 
 		#start pwm and while loop
-		pulses.start()
+		pulses.start(50)
 		while count < limit:
 			sleep(0.01)
 			count += 1
