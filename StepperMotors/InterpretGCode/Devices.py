@@ -167,9 +167,7 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	#printer.go(20,20)
-
-	printer.y.move(4, 2, 1)
+	printer.go(20,20)
 
 	gpio.cleanup()
 
