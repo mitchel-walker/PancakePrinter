@@ -34,7 +34,7 @@ class Motor():
 		}
 
 		#resolution string/key
-		self.resolution = '1/4'
+		self.resolution = 'half'
 
 		self.res_mode = self.res_dict[self.resolution]
 
@@ -169,5 +169,6 @@ if __name__ == "__main__":
 
 	# printer.go(20,20)
 	printer.x.move(10,1,0)
+	
 	gpio.cleanup()
 
