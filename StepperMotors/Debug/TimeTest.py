@@ -15,5 +15,7 @@ def timer(length, delay):
 
 	print("actually turned for %f seconds" % stop)
 
+
 if __name__ == "__main__":
-	timer(10,.00001)
+	delay = eval(input("Input delay time: "))
+	timer(10, delay)
