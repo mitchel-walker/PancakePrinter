@@ -174,7 +174,7 @@ if __name__ == "__main__":
 
 
 	#create pulses object
-	pulses = gpio.PWM(printer.x..step_pin, 100)
+	pulses = gpio.PWM(printer.x.step_pin, 100)
 
 	#start pwm and sleep
 	pulses.start(50)
