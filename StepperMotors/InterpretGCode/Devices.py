@@ -66,6 +66,7 @@ class Motor():
 
 		#set frequency
 		freq = (dist*200*self.get_step_size())/(self.calib*sec)
+		print(freq)
 
 		#set loop limit for 0.01 second delays
 		limit = int(100*sec)
