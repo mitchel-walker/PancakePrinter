@@ -1,4 +1,5 @@
 #This script handles the classes/methods for reading Gcode
+
 def find_all_commands(file):
 	#read file, add to list
 	with open(file) as f:
@@ -37,6 +38,7 @@ def find_all_commands(file):
 			else:
 				all_commands.add(ent)
 	print(all_commands)
+
 
 def read_file(file):
 	#return list of clean lines from gcode file

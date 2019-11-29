@@ -1,6 +1,6 @@
 #This script defines the motor class to be used for gcode interpretation
 from multiprocessing import Process
-from time import sleep
+from time import sleep, time
 import RPi.GPIO as gpio
 import json
 import re
@@ -64,15 +64,13 @@ class Motor():
 		#set direction pin
 		gpio.output(self.dir_pin, direct)
 
-		#set number of pulses
-		num_pulses = int((dist*200*self.get_step_size())/self.calib)
+		#set frequency
+		freq = (dist*200*self.get_step_size())/(self.calib*sec)
 
-		#set delay time (inverse frequency) - delay time is waited twice for each pulse
-		delay = sec/(num_pulses*2)
+		#create pulses object
+		pulses = gpio.PWM(self.step_pin, freq)
 
-
-		print(self.name + ' ' + str(1/delay))
-
+		
 
 		for i in range(num_pulses):
 			gpio.output(self.step_pin, gpio.HIGH)
@@ -168,4 +166,6 @@ if __name__ == "__main__":
 	printer = Printer(config_dict)
 
 	printer.go(20,20)
+
+	gpio.cleanup()
 
