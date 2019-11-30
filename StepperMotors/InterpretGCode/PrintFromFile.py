@@ -10,6 +10,7 @@ import re
 def run(printer, gcd_file):
 	#run through the 6 command options and call each corresponding command
 	for command in yield_commands(gcd_file):
+		print(command)
 		if len(command[0]) == 0:
 			continue
 		elif command[0] == "G0":
@@ -59,6 +60,6 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	run(printer, "../GCode/Test.gcode")
+	run(printer, "../GCode/Squares.gcode")
 
 	gpio.cleanup()
