@@ -11,7 +11,7 @@ def run(printer, gcd_file):
 	#run through the 6 command options and call each corresponding command
 	for command in yield_commands(gcd_file):
 		print(command)
-		if len(command[0]) == 0:
+		if len(command) == 0:
 			continue
 		elif command[0] == "G0":
 			printer.go(eval(command[1][1:]), eval(command[2][1:]))
