@@ -61,6 +61,12 @@ class Motor():
 
 	#move a single motor
 	def move(self, dist, sec, direct):
+		#move motor a given distance in time (sec) in direction (direct)
+
+		#return if time == 0 sec
+		if sec == 0:
+			return
+			
 		#set direction pin
 		gpio.output(self.dir_pin, direct)
 
