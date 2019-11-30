@@ -138,6 +138,15 @@ class Printer():
 
 		#reset position
 		self.pos = [end_x, end_y]
+
+	def pump_off(self):
+		return
+
+	def pump_on(self):
+		return
+
+	def motors_off(self):
+		return
 		
 
 
@@ -167,29 +176,7 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	# printer.go(20,20)
-	#printer.x.move(10,5,0)
-
-
-
-
-	#create pulses object
-	pulses = gpio.PWM(printer.x.step_pin, 100)
-
-	#start pwm and sleep
-	pulses.start(50)
-	sleep(1)
-	pulses.ChangeFrequency(200)
-	sleep(1)
-	pulses.ChangeFrequency(300)
-	sleep(1)
-	pulses.ChangeFrequency(400)
-	sleep(1)
-	pulses.ChangeFrequency(500)
-	sleep(1)
-	pulses.stop()
-
-
+	printer.go(20,20)
 
 
 	gpio.cleanup()

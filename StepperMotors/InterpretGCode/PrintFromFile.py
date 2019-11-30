@@ -2,14 +2,38 @@
 from Devices import Printer
 from ReadGCode import yield_commands
 import RPi.GPIO as gpio
+from time import sleep
 import json
 import re
 
 
 def run(printer, gcd_file):
+	#run through the 6 command options and call each corresponding command
 	for command in yield_commands(gcd_file):
-		if len(command) > 0 and command[0] == "G00":
+		if len(command[0]) == 0:
+			continue
+		elif command[0] == "G0":
 			printer.go(eval(command[1][1:]), eval(command[2][1:]))
+			continue
+		elif command[0] == "G4":
+			sleep(eval(command[1][1:])/1000)
+			continue
+		elif command[0] == "M107":
+			printer.pump_off()
+			continue
+		elif command[0] == "M106":
+			printer.pump_on()
+			continue
+		elif command[0] == "G28":
+			printer.go(0,0)
+			continue
+		elif command[0] == "M84":
+			printer.motors_off()
+			continue
+		else:
+			continue
+
+
 
 
 if __name__ == "__main__":
