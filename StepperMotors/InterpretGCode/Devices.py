@@ -74,9 +74,6 @@ class Motor():
 		freq = (dist*200*self.get_step_size())/(self.calib*sec)
 		print(freq)
 
-		#set loop limit for 0.01 second delays
-		limit = int(100*sec)
-
 		#create pulses object
 		pulses = gpio.PWM(self.step_pin, freq)
 
@@ -182,7 +179,9 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.go(20,20)
+	#printer.go(20,20)
+
+	printer.x.move(10,5,1)
 
 
 	gpio.cleanup()
