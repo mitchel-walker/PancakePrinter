@@ -185,6 +185,7 @@ class Printer():
 		#run processes
 		move_x.start()
 		move_y.start()
+		sleep(params[0][1])
 
 		#reset position
 		self.pos = [end_x, end_y]
@@ -231,7 +232,6 @@ if __name__ == "__main__":
 
 
 	printer.x.move(1200,10,1)
-	sleep(5)
 
 
 	gpio.cleanup()
