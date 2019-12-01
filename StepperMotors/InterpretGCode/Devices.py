@@ -87,7 +87,7 @@ class Motor():
 		self.pulses.ChangeDutyCycle(50)
 		sleep(2)
 		self.pulses.ChangeDutyCycle(0)
-		self.set_resolution("1/16")
+		self.set_resolution("1/8")
 		self.pulses.ChangeDutyCycle(50)
 		sleep(2)
 		self.pulses.ChangeDutyCycle(0)
