@@ -202,10 +202,10 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.go(400,-200)
+	# printer.go(400,-200)
 
 
-	# printer.x.move(120,2,1)
+	printer.x.move(200,2,1)
 	sleep(5)
 
 
