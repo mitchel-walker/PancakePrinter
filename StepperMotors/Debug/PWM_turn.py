@@ -29,7 +29,7 @@ resolution = {'full':(0,0,0),
 GPIO.setmode(GPIO.BCM)
 mode = (14,15,18)
 GPIO.setup(mode, GPIO.OUT)
-GPIO.output(mode, resolution['half'])
+GPIO.output(mode, resolution['1/32'])
 
 
 #connect to pigpio daemon
