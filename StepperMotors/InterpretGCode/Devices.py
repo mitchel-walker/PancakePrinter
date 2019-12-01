@@ -82,7 +82,7 @@ class Motor():
 
 
 
-		'''
+		
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/self.calib
 		#set delay time
@@ -105,6 +105,9 @@ class Motor():
 		sleep(sec)
 		self.pulses.ChangeDutyCycle(0)
 		#when time is waited, reset duty cycle to 0
+		'''
+
+
 
 		print("yes it ran")
 		
