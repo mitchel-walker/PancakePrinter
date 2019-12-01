@@ -167,7 +167,7 @@ class Printer():
 if __name__ == "__main__":
 
 	#remove warnings
-	gpio.setwarnings(False)
+	#gpio.setwarnings(False)
 
 	#set gpio naming scheme
 	gpio.setmode(gpio.BCM)
