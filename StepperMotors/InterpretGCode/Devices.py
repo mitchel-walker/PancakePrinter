@@ -192,11 +192,11 @@ if __name__ == "__main__":
 	sleep(1)
 	pulses.ChangeFrequency(200)
 	sleep(1)
-	pulses.ChangeFrequency(300)
-	sleep(1)
 	pulses.ChangeFrequency(400)
 	sleep(1)
-	pulses.ChangeFrequency(500)
+	pulses.ChangeFrequency(800)
+	sleep(1)
+	pulses.ChangeFrequency(1600)
 	sleep(1)
 
 
