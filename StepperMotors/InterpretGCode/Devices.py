@@ -85,8 +85,7 @@ class Motor():
 		delay = sec/(num_pulses*2)
 
 		i  = 0
-		limit = sec/delay
-		while i < limit:
+		while i < num_pulses:
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
