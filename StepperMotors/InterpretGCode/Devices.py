@@ -81,6 +81,8 @@ class Motor():
 		#set frequency
 		freq = (dist*200*self.get_step_size())/(self.calib*sec)
 
+		print(self.get_step_size(), self.calib, freq)
+
 		#change pulses frequency and set duty cycle to 50
 		self.pulses.ChangeFrequency(freq)
 		self.pulses.ChangeDutyCycle(50)
