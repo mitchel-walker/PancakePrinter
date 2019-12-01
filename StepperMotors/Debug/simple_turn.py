@@ -15,7 +15,7 @@ steps_per_rev = 200
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(dir_pin, GPIO.OUT)
 GPIO.setup(step_pin, GPIO.OUT)
-GPIO.output(dir_pin, cw)
+GPIO.output(dir_pin, 0)
 
 #set mircrostep rev pins
 mode = (14,15,18)
