@@ -111,7 +111,7 @@ class Motor():
 		delay = sec/(num_pulses*2)
 
 		#begin acceleration
-		acc_pulses = self.acceleration(dist/sec)
+		acc_pulses = self.accelerate(dist/sec)
 
 		i  = 0
 		while i < num_pulses-acc_pulses:
