@@ -41,8 +41,6 @@ class Motor():
 
 		self.set_resolution(self.resolution)
 
-		#set mode pins
-		self.set_mode_pins()
 
 	#must initialize pwm object with duty cycle 0 (arbitrary frequency 100 is set)
 	def initialize_pulses(self):
@@ -85,7 +83,7 @@ class Motor():
 		self.pulses.ChangeDutyCycle(50)
 		sleep(2)
 		self.pulses.ChangeDutyCycle(0)
-		self.set_resolution("1/4")
+		self.set_resolution("1/16")
 		self.pulses.ChangeDutyCycle(50)
 		sleep(2)
 		self.pulses.ChangeDutyCycle(0)
