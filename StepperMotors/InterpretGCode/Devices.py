@@ -184,7 +184,7 @@ if __name__ == "__main__":
 	#printer.x.move(10,10,1)
 
 	#set direction pin
-	gpio.output(20, direct)
+	gpio.output(20, 1)
 
 	#create pulses object
 	pulses = gpio.PWM(21, 100)
