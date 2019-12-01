@@ -80,6 +80,9 @@ class Motor():
 		gpio.output(self.dir_pin, gpio.HIGH)
 
 
+
+
+		'''
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/self.calib
 		#set delay time
@@ -93,17 +96,16 @@ class Motor():
 			i+= 1
 			
 		'''
-		print(freq)
-		print(self.step_pin)
+		freq = (dist*200*self.get_step_size())/(self.calib*sec)
 		
 
 		#change pulses frequency and set duty cycle to 50
-		self.pulses.ChangeFrequency(1000)
+		self.pulses.ChangeFrequency(freq)
 		self.pulses.ChangeDutyCycle(50)
-		sleep(5)
+		sleep(sec)
 		self.pulses.ChangeDutyCycle(0)
 		#when time is waited, reset duty cycle to 0
-		'''
+		
 
 
 
@@ -205,10 +207,8 @@ if __name__ == "__main__":
 
 	# printer.go(120,40)
 
-	move_x = Process(target = printer.x.move, args=(240,2,1))
-	move_x.start()
 
-	# printer.x.move(240,2,1)
+	printer.x.move(240,2,1)
 
 
 	gpio.cleanup()
