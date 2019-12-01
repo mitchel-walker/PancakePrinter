@@ -36,10 +36,8 @@ class Motor():
 			"1/32":32
 		}
 
-		#resolution string/key
-		self.resolution = '1/32'
 
-		self.set_resolution(self.resolution)
+		self.set_resolution('1/32')
 
 
 	#must initialize pwm object with duty cycle 0 (arbitrary frequency 100 is set)
@@ -61,7 +59,13 @@ class Motor():
 
 	#setters and getters for resolution
 	def set_resolution(self, resolution):
+		#set resolution string
+		self.resolution = resolution
+
+		#set mode pin tuple values
 		self.res_mode = self.res_dict[resolution]
+
+		#reset gpio values
 		self.set_mode_pins()
 
 	#move a single motor
