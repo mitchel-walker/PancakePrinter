@@ -190,17 +190,12 @@ if __name__ == "__main__":
 	pulses = gpio.PWM(21, 100)
 	pulses.start(50)
 	sleep(1)
-	pulses.ChangeFrequency(200)
-	sleep(1)
-	pulses.ChangeFrequency(400)
-	sleep(1)
-	pulses.ChangeFrequency(800)
-	sleep(1)
-	pulses.ChangeFrequency(1600)
-	sleep(1)
+	
 
 
 	pulses.stop()
+	sleep(1)
+	pulses.start()
 
 
 	gpio.cleanup()
