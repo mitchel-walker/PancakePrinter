@@ -188,14 +188,12 @@ if __name__ == "__main__":
 
 	#create pulses object
 	pulses = gpio.PWM(21, 400)
+
 	pulses.start(50)
 	sleep(1)
-	
-
-
-	pulses.stop()
+	pulses.ChangeDutyCycle(0)
 	sleep(1)
-	pulses.start(50)
+	pulses.ChangeDutyCycle(50)
 	sleep(1)
 	pulses.stop()
 
