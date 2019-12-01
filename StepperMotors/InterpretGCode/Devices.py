@@ -143,7 +143,7 @@ class Printer():
 			dist_y = self.pos[1] - end_y
 
 		#determine the longest time either motor will take to go the distance
-		max_time = max((dist_x*60/self.x.max_spd),(dist_y*60/self.y.max_spd))
+		max_time = max((dist_x/self.x.max_spd),(dist_y/self.y.max_spd))
 
 		return ((dist_x, max_time, dir_x), (dist_y, max_time, dir_y))
 	
@@ -203,7 +203,7 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.go(120,20)
+	printer.go(120,40)
 
 	# printer.x.move(240,2,1)
 
