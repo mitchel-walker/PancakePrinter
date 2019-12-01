@@ -70,8 +70,6 @@ class Motor():
 		#set direction pin
 		gpio.output(self.dir_pin, direct)
 
-		print(self.calib, self.get_step_size())
-
 		#set frequency
 		freq = (dist*200*self.get_step_size())/(self.calib*sec)
 		print(freq)
@@ -183,7 +181,26 @@ if __name__ == "__main__":
 
 	#printer.go(20,20)
 
-	printer.x.move(10,10,1)
+	#printer.x.move(10,10,1)
+
+	#set direction pin
+	gpio.output(20, direct)
+
+	#create pulses object
+	pulses = gpio.PWM(21, 100)
+	pulses.start(50)
+	sleep(1)
+	pulses.ChangeFrequency(200)
+	sleep(1)
+	pulses.ChangeFrequency(300)
+	sleep(1)
+	pulses.ChangeFrequency(400)
+	sleep(1)
+	pulses.ChangeFrequency(500)
+	sleep(1)
+
+
+	pulses.stop()
 
 
 	gpio.cleanup()
