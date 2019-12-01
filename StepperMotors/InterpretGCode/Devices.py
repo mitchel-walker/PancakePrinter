@@ -85,7 +85,7 @@ class Motor():
 		
 
 		#change pulses frequency and set duty cycle to 50
-		self.pulses.ChangeFrequency(freq)
+		self.pulses.ChangeFrequency(1000)
 		self.pulses.ChangeDutyCycle(50)
 		sleep(sec)
 		self.pulses.ChangeDutyCycle(0)
