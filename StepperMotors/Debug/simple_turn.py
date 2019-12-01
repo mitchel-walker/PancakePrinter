@@ -5,8 +5,8 @@ from time import sleep
 GPIO.setwarnings(False)
 
 #set pin numbers
-dir_pin = 20
-step_pin = 21
+dir_pin = 5
+step_pin = 6
 cw = 1
 ccw = 0
 steps_per_rev = 200
