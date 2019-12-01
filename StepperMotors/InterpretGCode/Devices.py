@@ -78,8 +78,11 @@ class Motor():
 		#set direction pin
 		gpio.output(self.dir_pin, direct)
 
-		#set frequency
-		delay = (self.calib*sec)/(dist*200*self.get_step_size())
+
+		#set number of pulses
+		num_pulses = (dist*200*self.get_step_size())/self.calib
+		#set delay time
+		delay = sec/(num_pulses*2)
 
 		i  = 0
 		limit = sec/delay
@@ -87,7 +90,6 @@ class Motor():
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
-			sleep
 			
 		'''
 		print(freq)
