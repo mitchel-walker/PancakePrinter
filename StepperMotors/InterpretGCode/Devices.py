@@ -105,6 +105,8 @@ class Motor():
 		sleep(1)
 		self.pulses.ChangeFrequency(32000)
 		sleep(1)
+		
+		self.pulses.stop()
 
 
 
