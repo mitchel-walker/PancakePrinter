@@ -5,8 +5,8 @@ from time import sleep
 GPIO.setwarnings(False)
 
 #set pin numbers
-dir_pin = 5
-step_pin = 6
+dir_pin = 20
+step_pin = 21
 cw = 1
 ccw = 0
 steps_per_rev = 200
@@ -34,7 +34,7 @@ resolution = {'full':(0,0,0),
 GPIO.output(mode, resolution['1/32'])
 
 step_count = steps_per_rev*32
-delay = 0.05/32
+delay = 0.005
 
 '''
 Full - 0,0,0
