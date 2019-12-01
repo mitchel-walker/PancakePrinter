@@ -78,7 +78,7 @@ class Motor():
 		gpio.output(self.dir_pin, direct)
 
 		#set frequency
-		freq = (dist*200)/(self.calib*sec)
+		freq = (dist*200*self.get_step_size())/(self.calib*sec)
 
 		#change pulses frequency and set duty cycle to 50
 		self.pulses.ChangeFrequency(freq)
