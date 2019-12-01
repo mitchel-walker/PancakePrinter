@@ -37,7 +37,7 @@ class Motor():
 		}
 
 		#resolution string/key
-		self.resolution = 'half'
+		self.resolution = '1/32'
 
 		self.res_mode = self.res_dict[self.resolution]
 
