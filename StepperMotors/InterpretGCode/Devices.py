@@ -37,7 +37,7 @@ class Motor():
 		}
 
 
-		self.set_resolution('1/16')
+		self.set_resolution('half')
 
 
 	#must initialize pwm object with duty cycle 0 (arbitrary frequency 100 is set)
@@ -97,6 +97,7 @@ class Motor():
 		sleep(1)
 		self.pulses.ChangeFrequency(2000)
 		sleep(1)
+		'''
 		self.pulses.ChangeFrequency(4000)
 		sleep(1)
 		self.pulses.ChangeFrequency(8000)
@@ -107,6 +108,7 @@ class Motor():
 		sleep(1)
 		self.pulses.ChangeFrequency(64000)
 		sleep(1)
+		'''
 
 		self.pulses.stop()
 
