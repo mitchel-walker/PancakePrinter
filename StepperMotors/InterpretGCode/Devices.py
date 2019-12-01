@@ -77,7 +77,7 @@ class Motor():
 			return
 			
 		#set direction pin
-		gpio.output(self.dir_pin, gpio.LOW)
+		gpio.output(self.dir_pin, gpio.HIGH)
 
 
 		#set number of pulses
