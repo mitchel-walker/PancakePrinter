@@ -156,14 +156,14 @@ class Printer():
 
 		#initialize processes
 		move_x = Process(target = self.x.move, args = params[0])
-		move_y = Process(target = self.y.move, args = params[1])
+		#move_y = Process(target = self.y.move, args = params[1])
 
 		#run processes
 		move_x.start()
-		move_y.start()
+		#move_y.start()
 
 		#reset position
-		self.pos = [end_x, end_y]
+		#self.pos = [end_x, end_y]
 
 	def pump_off(self):
 		return
