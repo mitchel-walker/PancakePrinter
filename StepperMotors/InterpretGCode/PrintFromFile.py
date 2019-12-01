@@ -11,8 +11,8 @@ def run(printer, gcd_file):
 	#run through the 6 command options and call each corresponding command
 
 	#set x and y scale
-	scale_x = 2
-	scale_y = 2
+	scale_x = 1.3
+	scale_y = 1.3
 
 	#set minimum distance to send command to printer
 	min_dist = 8
@@ -79,6 +79,6 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	run(printer, "../GCode/Pump.gcode")
+	run(printer, "../GCode/smiley3.gcode")
 
 	gpio.cleanup()
