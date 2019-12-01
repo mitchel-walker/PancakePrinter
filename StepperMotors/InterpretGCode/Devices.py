@@ -67,6 +67,9 @@ class Motor():
 		#reset gpio values
 		self.set_mode_pins()
 
+	def accelerate(self, start_spd, end_spd):
+		return
+
 
 	#move a single motor
 	def move(self, dist, sec, direct):
