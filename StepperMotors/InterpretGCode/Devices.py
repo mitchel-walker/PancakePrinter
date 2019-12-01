@@ -39,7 +39,7 @@ class Motor():
 		#resolution string/key
 		self.resolution = '1/32'
 
-		self.res_mode = self.res_dict[self.resolution]
+		self.set_resolution(self.resolution)
 
 		#set mode pins
 		self.set_mode_pins()
@@ -62,8 +62,8 @@ class Motor():
 		return self.step_size[self.resolution]
 
 	#setters and getters for resolution
-	def set_resolution(self):
-		self.res_mode = self.res_dict[self.resolution]
+	def set_resolution(self, resolution):
+		self.res_mode = self.res_dict[resolution]
 		self.set_mode_pins()
 
 	#move a single motor
