@@ -84,12 +84,15 @@ class Motor():
 		#set delay time
 		delay = sec/(num_pulses*2)
 
+		print(num_pulses)
+
 		i  = 0
 		while i < num_pulses:
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
+			print(i)
 			
 		'''
 		print(freq)
