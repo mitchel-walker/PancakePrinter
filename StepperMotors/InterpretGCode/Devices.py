@@ -16,7 +16,7 @@ class Motor():
 		self.max_spd = att_dict["max_speed"]
 
 		#initialize pwm object
-		#self.initialize_pulses()
+		self.initialize_pulses()
 
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
