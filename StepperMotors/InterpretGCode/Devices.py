@@ -47,7 +47,6 @@ class Motor():
 
 	#setters and getters for mode pins
 	def set_mode_pins(self):
-		gpio.setup(self.mode_pins, gpio.OUT)
 		gpio.output(self.mode_pins, self.res_mode)
 
 	def get_mode(self):
