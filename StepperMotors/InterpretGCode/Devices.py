@@ -81,6 +81,18 @@ class Motor():
 		#set frequency
 		freq = (dist*200*self.get_step_size())/(self.calib*sec)
 
+		delay = 0.001
+
+		i  = 0
+		limit = freq*sec
+		while i < limit:
+			gpio.output(self.step_pin, gpio.HIGH)
+			sleep(delay)
+			gpio.output(self.step_pin, gpio.HIGH)
+			sleep(delay)
+		
+
+		'''
 		print(freq)
 		print(self.step_pin)
 		
@@ -91,6 +103,7 @@ class Motor():
 		sleep(5)
 		self.pulses.ChangeDutyCycle(0)
 		#when time is waited, reset duty cycle to 0
+		'''
 
 
 
