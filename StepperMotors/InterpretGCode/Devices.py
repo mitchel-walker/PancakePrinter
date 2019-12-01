@@ -86,7 +86,8 @@ class Motor():
 		while i < limit:
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
-			gpio.output(self.step_pin, gpio.HIGH)
+			gpio.output(self.step_pin, gpio.LOW)
+			sleep
 			
 		'''
 		print(freq)
