@@ -71,7 +71,7 @@ class Motor():
 		gpio.output(self.dir_pin, direct)
 
 		#set frequency
-		freq = (dist*200)/(self.calib*sec)
+		freq = (dist*200*self.get_step_size())/(self.calib*sec)
 		print(freq)
 
 		#create pulses object
@@ -181,7 +181,7 @@ if __name__ == "__main__":
 
 	#printer.go(20,20)
 
-	printer.y.move(10,10,1)
+	printer.x.move(10,10,1)
 
 
 	gpio.cleanup()
