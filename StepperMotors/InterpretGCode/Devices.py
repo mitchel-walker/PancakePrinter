@@ -154,8 +154,6 @@ class Printer():
 		#get parameters
 		params = self.get_params(end_x, end_y)
 
-		print(params)
-
 		#initialize processes
 		move_x = Process(target = self.x.move, args = params[0])
 		move_y = Process(target = self.y.move, args = params[1])
@@ -205,7 +203,10 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.go(120,40)
+	# printer.go(120,40)
+
+	move_x = Process(target = printer.x.move, (240,2,1))
+	move_x.start()
 
 	# printer.x.move(240,2,1)
 
