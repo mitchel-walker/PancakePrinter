@@ -67,6 +67,7 @@ class Motor():
 		#reset gpio values
 		self.set_mode_pins()
 
+
 	#move a single motor
 	def move(self, dist, sec, direct):
 		#move motor a given distance in time (sec) in direction (direct)
@@ -82,7 +83,7 @@ class Motor():
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/self.calib
 		#set delay time
-		delay = sec/(num_pulses)
+		delay = sec/(num_pulses*2)
 
 		i  = 0
 		while i < num_pulses:
@@ -197,15 +198,14 @@ if __name__ == "__main__":
 			for key in dc["pins"]:
 				output_pins.append(dc["pins"][key])
 	
-	print(output_pins)
-	
+
 	gpio.setup(output_pins,gpio.OUT)
 
 	printer = Printer(config_dict)
 
 	#printer.go(20,20)
 
-	printer.x.move(10,2,0)
+	printer.x.move(240,2,0)
 
 
 	gpio.cleanup()
