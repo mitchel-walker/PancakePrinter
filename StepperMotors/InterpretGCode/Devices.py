@@ -205,7 +205,7 @@ if __name__ == "__main__":
 
 	# printer.go(120,40)
 
-	move_x = Process(target = printer.x.move, (240,2,1))
+	move_x = Process(target = printer.x.move, args=(240,2,1))
 	move_x.start()
 
 	# printer.x.move(240,2,1)
