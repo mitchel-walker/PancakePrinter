@@ -97,9 +97,10 @@ class Motor():
 		sleep(1)
 		self.pulses.ChangeFrequency(2000)
 		sleep(1)
-		'''
+		
 		self.pulses.ChangeFrequency(4000)
 		sleep(1)
+		'''
 		self.pulses.ChangeFrequency(8000)
 		sleep(1)
 		self.pulses.ChangeFrequency(16000)
