@@ -197,6 +197,8 @@ if __name__ == "__main__":
 			for key in dc["pins"]:
 				output_pins.append(dc["pins"][key])
 	
+	print(output_pins)
+	
 	gpio.setup(output_pins,gpio.OUT)
 
 	printer = Printer(config_dict)
