@@ -83,11 +83,11 @@ class Motor():
 		#change pulses frequency and set duty cycle to 50
 		self.pulses.ChangeFrequency(freq)
 		self.pulses.ChangeDutyCycle(50)
-		sleep(5)
+		sleep(2)
 		self.pulses.ChangeDutyCycle(0)
-		self.set_resolution("half")
+		self.set_resolution("1/4")
 		self.pulses.ChangeDutyCycle(50)
-		sleep(5)
+		sleep(2)
 		self.pulses.ChangeDutyCycle(0)
 		#when time is waited, reset duty cycle to 0
 
