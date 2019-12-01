@@ -37,7 +37,7 @@ class Motor():
 		}
 
 
-		self.set_resolution('1/4')
+		self.set_resolution('1/8')
 
 
 	#must initialize pwm object with duty cycle 0 (arbitrary frequency 100 is set)
