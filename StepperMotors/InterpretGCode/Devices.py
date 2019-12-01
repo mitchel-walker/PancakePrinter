@@ -196,6 +196,8 @@ if __name__ == "__main__":
 	pulses.stop()
 	sleep(1)
 	pulses.start(50)
+	sleep(1)
+	pulses.stop()
 
 
 	gpio.cleanup()
