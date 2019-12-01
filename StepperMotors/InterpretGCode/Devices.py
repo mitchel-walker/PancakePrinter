@@ -36,8 +36,8 @@ class Motor():
 			"1/32":32
 		}
 
-
-		self.set_resolution('1/8')
+		#set object resolution string and microstep pin values
+		self.set_resolution('1/4')
 
 
 	#must initialize pwm object with duty cycle 0 (arbitrary frequency 100 is set)
