@@ -82,7 +82,7 @@ class Motor():
 		delay = (self.calib*sec)/(dist*200*self.get_step_size())
 
 		i  = 0
-		limit = freq*sec
+		limit = sec/delay
 		while i < limit:
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
