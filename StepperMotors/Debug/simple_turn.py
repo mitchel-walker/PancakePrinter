@@ -31,16 +31,11 @@ resolution = {'full':(0,0,0),
 
 
 #set output resolution
-GPIO.output(mode, resolution['full'])
+GPIO.output(mode, resolution['half'])
 
 step_count = steps_per_rev*32
 delay = 0.01
 
-'''
-Full - 0,0,0
-Half - 1,0,0
-1/4
-'''
 
 while True:
         try:

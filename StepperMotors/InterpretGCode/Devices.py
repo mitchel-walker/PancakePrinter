@@ -87,9 +87,7 @@ class Motor():
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.HIGH)
-			sleep(delay)
-
-
+			
 		'''
 		print(freq)
 		print(self.step_pin)
