@@ -34,7 +34,7 @@ resolution = {'full':(0,0,0),
 GPIO.output(mode, resolution['half'])
 
 step_count = steps_per_rev*32
-delay = 0.005/32
+delay = 0.05/32
 
 '''
 Full - 0,0,0
