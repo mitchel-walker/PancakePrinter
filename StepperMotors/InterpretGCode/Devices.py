@@ -81,7 +81,7 @@ class Motor():
 		#set frequency
 		freq = (dist*200*self.get_step_size())/(self.calib*sec)
 
-		'''
+		
 
 		#change pulses frequency and set duty cycle to 50
 		self.pulses.ChangeFrequency(freq)
@@ -89,29 +89,7 @@ class Motor():
 		sleep(sec)
 		self.pulses.ChangeDutyCycle(0)
 		#when time is waited, reset duty cycle to 0
-		'''
-		self.pulses.ChangeFrequency(500)
-		self.pulses.ChangeDutyCycle(50)
-		sleep(1)
-		self.pulses.ChangeFrequency(1000)
-		sleep(1)
-		self.pulses.ChangeFrequency(2000)
-		sleep(1)
-		
-		self.pulses.ChangeFrequency(4000)
-		sleep(1)
-		'''
-		self.pulses.ChangeFrequency(8000)
-		sleep(1)
-		self.pulses.ChangeFrequency(16000)
-		sleep(1)
-		self.pulses.ChangeFrequency(32000)
-		sleep(1)
-		self.pulses.ChangeFrequency(64000)
-		sleep(1)
-		'''
 
-		self.pulses.stop()
 
 
 
@@ -211,7 +189,7 @@ if __name__ == "__main__":
 
 	#printer.go(20,20)
 
-	printer.x.move(10,1,1)
+	printer.x.move(10,2,1)
 
 
 	gpio.cleanup()
