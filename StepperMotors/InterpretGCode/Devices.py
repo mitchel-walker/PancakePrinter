@@ -16,7 +16,7 @@ class Motor():
 		self.max_spd = att_dict["max_speed"]
 
 		#initialize pwm object
-		self.initialize_pulses()
+		#self.initialize_pulses()
 
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
@@ -79,9 +79,9 @@ class Motor():
 		gpio.output(self.dir_pin, direct)
 
 		#set frequency
-		freq = (dist*200*self.get_step_size())/(self.calib*sec)
+		delay = (self.calib*sec)/(dist*200*self.get_step_size())
 
-		delay = 0.001
+		delay = 
 
 		i  = 0
 		limit = freq*sec
@@ -90,7 +90,7 @@ class Motor():
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
-		
+
 
 		'''
 		print(freq)
@@ -205,7 +205,6 @@ if __name__ == "__main__":
 	#printer.go(20,20)
 
 	printer.x.move(10,2,1)
-	printer.x.pulses.stop()
 
 
 	gpio.cleanup()
