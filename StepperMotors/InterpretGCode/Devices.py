@@ -70,6 +70,8 @@ class Motor():
 		#set direction pin
 		gpio.output(self.dir_pin, direct)
 
+		print(self.get_step_size())
+		
 		#set frequency
 		freq = (dist*200*self.get_step_size())/(self.calib*sec)
 		print(freq)
