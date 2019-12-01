@@ -37,7 +37,7 @@ class Motor():
 		}
 
 		#set object resolution string and microstep pin values
-		self.set_resolution('1/16')
+		self.set_resolution('1/8')
 
 
 	#must initialize pwm object with duty cycle 0 (arbitrary frequency 100 is set)
@@ -202,10 +202,11 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	# printer.go(120,-40)
+	printer.go(120,-40)
 
 
-	printer.x.move(120,2,1)
+	# printer.x.move(120,2,1)
+	sleep(5)
 
 
 	gpio.cleanup()
