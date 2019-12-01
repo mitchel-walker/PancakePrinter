@@ -13,7 +13,7 @@ def run(printer, gcd_file):
 		print(command)
 		if len(command) == 0:
 			continue
-		elif command[0] == "G0":
+		elif command[0] == "G00":
 			printer.go(eval(command[1][1:]), eval(command[2][1:]))
 			continue
 		elif command[0] == "G4":

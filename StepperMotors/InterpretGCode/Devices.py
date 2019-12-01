@@ -77,10 +77,7 @@ class Motor():
 			return
 			
 		#set direction pin
-		gpio.output(self.dir_pin, 1)
-
-
-
+		gpio.output(self.dir_pin, direct)
 
 		
 		#set number of pulses
@@ -106,11 +103,6 @@ class Motor():
 		self.pulses.ChangeDutyCycle(0)
 		#when time is waited, reset duty cycle to 0
 		'''
-
-
-
-		print("yes it ran")
-		
 
 
 
