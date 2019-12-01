@@ -214,6 +214,7 @@ if __name__ == "__main__":
 	#Remove all whitespace characters
 	with open('config.json') as f:
 		text = re.sub(r"\s",'',f.read())
+	print(text)
 	config_dict = json.loads(text)
 
 
