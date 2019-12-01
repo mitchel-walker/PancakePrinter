@@ -82,14 +82,13 @@ class Motor():
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/self.calib
 		#set delay time
-		delay = sec/(num_pulses*2)
+		delay = sec/(num_pulses)
 
 		i  = 0
 		while i < num_pulses:
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
-			sleep(delay)
 			i+= 1
 			
 		'''
@@ -204,7 +203,7 @@ if __name__ == "__main__":
 
 	#printer.go(20,20)
 
-	printer.x.move(10,2,1)
+	printer.x.move(10,2,0)
 
 
 	gpio.cleanup()
