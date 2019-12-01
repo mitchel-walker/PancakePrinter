@@ -79,6 +79,8 @@ class Motor():
 		#set direction pin
 		gpio.output(self.dir_pin, direct)
 
+		print(self.dir_pin)
+
 
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/self.calib
