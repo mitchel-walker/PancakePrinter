@@ -232,7 +232,7 @@ if __name__ == "__main__":
 	# printer.go(400,-200)
 
 
-	printer.x.move(1200,10,1)
+	printer.x.move(200,5,1)
 
 
 	gpio.cleanup()
