@@ -14,9 +14,11 @@ class Motor():
 		self.mode_pins = (att_dict["pins"]["m0"],att_dict["pins"]["m1"],att_dict["pins"]["m2"])
 		self.calib = att_dict["calib"]
 		self.max_spd = att_dict["max_speed"]
+		self.acc = att_dict["acceleration"]
+		self.curr_speed = 0
 
 		#initialize pwm object
-		self.initialize_pulses()
+		# self.initialize_pulses()
 
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
@@ -67,9 +69,29 @@ class Motor():
 		#reset gpio values
 		self.set_mode_pins()
 
-	def accelerate(self, start_spd, end_spd):
-		return
 
+	def accelerate(self, end_speed):
+
+		start_delay = self.calib/(self.curr_speed*200*self.get_step_size())
+		end_delay = self.calib/(end_speed*200*self.get_step_size())
+
+		delta = start_delay-end_delay
+
+		delay = start_delay
+
+		num_pulses = 0
+		while delay <= end_delay:
+			gpio.output(self.step_pin,gpio.HIGH)
+			sleep(delay)
+			gpio.output(self.step_pin,gpio.LOW)
+			delay += delta
+			num_pulses += 1
+
+		self.curr_speed = end_speed
+
+		return (num_pulses*self.calib)/(self.get_step_size()*200)
+
+	
 
 	#move a single motor
 	def move(self, dist, sec, direct):
@@ -88,8 +110,11 @@ class Motor():
 		#set delay time
 		delay = sec/(num_pulses*2)
 
+		#begin acceleration
+		acc_pulses = self.acceleration(dist/sec)
+
 		i  = 0
-		while i < num_pulses:
+		while i < num_pulses-acc_pulses:
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
@@ -118,9 +143,6 @@ class Printer():
 		self.x = Motor(config_dict[0])
 		self.y = Motor(config_dict[1])
 		self.pump = Motor(config_dict[2])
-
-		#acceleration time
-		self.acc = config_dict[3]["acceleration"]
 
 		#initial position
 		self.pos = [0.0, 0.0]
