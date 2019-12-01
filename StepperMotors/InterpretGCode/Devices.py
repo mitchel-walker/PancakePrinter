@@ -156,14 +156,14 @@ class Printer():
 
 		#initialize processes
 		move_x = Process(target = self.x.move, args = params[0])
-		#move_y = Process(target = self.y.move, args = params[1])
+		move_y = Process(target = self.y.move, args = params[1])
 
 		#run processes
 		move_x.start()
-		#move_y.start()
+		move_y.start()
 
 		#reset position
-		#self.pos = [end_x, end_y]
+		self.pos = [end_x, end_y]
 
 	def pump_off(self):
 		return
@@ -203,9 +203,9 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	printer.go(120,40)
+	#printer.go(120,40)
 
-	# printer.x.move(240,2,1)
+	printer.x.move(240,2,1)
 
 
 	gpio.cleanup()
