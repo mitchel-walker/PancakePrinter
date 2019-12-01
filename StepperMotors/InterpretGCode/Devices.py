@@ -111,10 +111,10 @@ class Motor():
 		delay = sec/(num_pulses*2)
 
 		#begin acceleration
-		acc_pulses = self.accelerate(dist/sec)
+		#acc_pulses = self.accelerate(dist/sec)
 
 		i  = 0
-		while i < num_pulses-acc_pulses:
+		while i < num_pulses:
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
