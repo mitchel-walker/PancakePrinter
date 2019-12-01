@@ -187,7 +187,7 @@ if __name__ == "__main__":
 	gpio.output(20, 1)
 
 	#create pulses object
-	pulses = gpio.PWM(21, 100)
+	pulses = gpio.PWM(21, 400)
 	pulses.start(50)
 	sleep(1)
 	
@@ -195,7 +195,7 @@ if __name__ == "__main__":
 
 	pulses.stop()
 	sleep(1)
-	pulses.start()
+	pulses.start(50)
 
 
 	gpio.cleanup()
