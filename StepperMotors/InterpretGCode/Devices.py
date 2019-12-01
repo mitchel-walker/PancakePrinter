@@ -105,6 +105,8 @@ class Motor():
 		sleep(sec)
 		self.pulses.ChangeDutyCycle(0)
 		#when time is waited, reset duty cycle to 0
+
+		print("yes it ran")
 		
 
 
@@ -209,7 +211,7 @@ if __name__ == "__main__":
 
 
 	printer.x.move(240,2,1)
-	
+
 	sleep(5)
 
 
