@@ -15,6 +15,9 @@ class Motor():
 		self.calib = att_dict["calib"]
 		self.max_spd = att_dict["max_speed"]
 
+		#initialize pwm object
+		self.initialize_pulses()
+
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
 		'half':(1,0,0),
@@ -41,6 +44,10 @@ class Motor():
 		#set mode pins
 		self.set_mode_pins()
 
+	#must initialize pwm object with duty cycle 0 (arbitrary frequency 100 is set)
+	def initialize_pulses(self):
+		self.pulses = gpio.PWM(self.step_pin, 100)
+		self.pulses.start(0)
 
 	#setters and getters for mode pins
 	def set_mode_pins(self):
@@ -72,16 +79,13 @@ class Motor():
 
 		#set frequency
 		freq = (dist*200*self.get_step_size())/(self.calib*sec)
-		print(freq)
 
-		#create pulses object
-		pulses = gpio.PWM(self.step_pin, freq)
-
-		#start pwm and sleep
-		pulses.start(50)
+		#change pulses frequency and set duty cycle to 50
+		self.pulses.ChangeFrequency(freq)
+		self.pulses.ChangeDutyCycle(50)
 		sleep(sec)
-		pulses.stop()
-		#when loop exits stop the pwm
+		self.pulses.ChangeDutyCycle(0)
+		#when time is waited, reset duty cycle to 0
 
 
 
@@ -181,21 +185,7 @@ if __name__ == "__main__":
 
 	#printer.go(20,20)
 
-	#printer.x.move(10,10,1)
-
-	#set direction pin
-	gpio.output(20, 1)
-
-	#create pulses object
-	pulses = gpio.PWM(21, 400)
-
-	pulses.start(50)
-	sleep(1)
-	pulses.ChangeDutyCycle(0)
-	sleep(1)
-	pulses.ChangeDutyCycle(50)
-	sleep(1)
-	pulses.stop()
+	printer.x.move(10,10,1)
 
 
 	gpio.cleanup()
