@@ -124,7 +124,7 @@ class Motor():
 
 
 		i  = 0
-		while i < num_pulses - acc_pulses:
+		while i < num_pulses:
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
