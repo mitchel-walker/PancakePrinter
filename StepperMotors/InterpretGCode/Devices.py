@@ -195,6 +195,7 @@ class Printer():
 		#run processes
 		move_x.start()
 		move_y.start()
+		print(params)
 		sleep(params[0][1])
 
 		#reset position
