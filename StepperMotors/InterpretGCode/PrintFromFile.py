@@ -17,6 +17,7 @@ def run(printer, gcd_file):
 			printer.go(eval(command[1][1:]), eval(command[2][1:]))
 			continue
 		elif command[0] == "G4":
+			printer.motors_off()
 			sleep(eval(command[1][1:])/1000)
 			continue
 		elif command[0] == "M107":

@@ -14,7 +14,6 @@ class Motor():
 		self.mode_pins = (att_dict["pins"]["m0"],att_dict["pins"]["m1"],att_dict["pins"]["m2"])
 		self.calib = att_dict["calib"]
 		self.max_spd = att_dict["max_speed"]
-		self.acc = att_dict["acceleration"]
 		self.curr_speed = 0
 
 		#initialize pwm object
@@ -71,16 +70,30 @@ class Motor():
 
 
 	def accelerate(self, end_speed):
+		#return 0 if no acceleration is needed
+		if -0.02 < self.curr_speed - end_speed < 0.02:
+			return 0
 
-		start_delay = self.calib/(self.curr_speed*200*self.get_step_size())
-		end_delay = self.calib/(end_speed*200*self.get_step_size())
+		#determine start delay time
+		if self.curr_speed == 0:
+			start_delay = 0.01
+		else:
+			start_delay = self.calib/(abs(self.curr_speed)*200*self.get_step_size())
 
-		delta = start_delay-end_delay
+		#determine end delay time
+		if end_speed == 0:
+			end_delay = 0.01
+		else:
+			end_delay = self.calib/(abs(end_speed)*200*self.get_step_size())
 
+		#set arbitrary change in period for each pulse
+		delta = 0.01
+
+		#initialize delay variable
 		delay = start_delay
 
 		num_pulses = 0
-		while delay <= end_delay:
+		while delay < end_delay:
 			gpio.output(self.step_pin,gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin,gpio.LOW)
@@ -89,7 +102,7 @@ class Motor():
 
 		self.curr_speed = end_speed
 
-		return (num_pulses*self.calib)/(self.get_step_size()*200)
+		return num_pulses
 
 	
 
@@ -100,21 +113,21 @@ class Motor():
 		#return if time == 0 sec
 		if sec == 0:
 			return
-			
-		#set direction pin
-		gpio.output(self.dir_pin, direct)
-
 		
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/self.calib
 		#set delay time
-		delay = sec/(num_pulses*2)
+		delay = sec/(num_pulses)
 
 		#begin acceleration
-		#acc_pulses = self.accelerate(dist/sec)
+		if direct == 0 and 
+			acc_pulses = self.accelerate(-dist/sec)
+		else:
+			acc_pulses = self.accelerate(dist/sec)
+
 
 		i  = 0
-		while i < num_pulses:
+		while i < num_pulses - acc_pulses:
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
@@ -197,7 +210,9 @@ class Printer():
 		return
 
 	def motors_off(self):
-		return
+		#accelerate each motor to speed 0
+		self.x.accelerate(0)
+		self.y.accelerate(0)
 		
 
 
@@ -206,7 +221,7 @@ class Printer():
 if __name__ == "__main__":
 
 	#remove warnings
-	#gpio.setwarnings(False)
+	gpio.setwarnings(False)
 
 	#set gpio naming scheme
 	gpio.setmode(gpio.BCM)
