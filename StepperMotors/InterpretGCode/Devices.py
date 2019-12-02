@@ -116,6 +116,7 @@ class Motor():
 		#pause for time if dist = 0
 		if dist == 0:
 			sleep(sec)
+			return
 
 		#set direction pin output
 		gpio.output(self.dir_pin, direct)
