@@ -113,7 +113,10 @@ class Motor():
 		#return if time == 0 sec
 		if sec == 0:
 			return
-		
+
+		#set direction pin output
+		gpio.output(self.dir_pin, direct)
+
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/self.calib
 		#set delay time
