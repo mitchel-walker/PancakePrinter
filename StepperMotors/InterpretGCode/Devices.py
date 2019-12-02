@@ -120,10 +120,7 @@ class Motor():
 		delay = sec/(num_pulses)
 
 		#begin acceleration
-		if direct == 0 and 
-			acc_pulses = self.accelerate(-dist/sec)
-		else:
-			acc_pulses = self.accelerate(dist/sec)
+		#
 
 
 		i  = 0
