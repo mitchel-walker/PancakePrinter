@@ -264,6 +264,7 @@ if __name__ == "__main__":
 
 	printer.x.move(120,2,1)
 	printer.x.move(120,2,0)
+	printer.x.stop()
 
 
 	gpio.cleanup()
