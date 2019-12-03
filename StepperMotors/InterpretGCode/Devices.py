@@ -69,9 +69,9 @@ class Motor():
 		self.set_mode_pins()
 
 
-	def accelerate(self, end_speed):
+	def accelerate(self, end_speed, percent, time):
 		#return 0 if no acceleration is needed
-		if -0.02 < self.curr_speed - end_speed < 0.02:
+		if (-10 <= self.curr_speed - end_speed <= 10) or (time < 0.02):
 			return 0
 
 		#determine start delay time
@@ -86,18 +86,31 @@ class Motor():
 		else:
 			end_delay = self.calib/(abs(end_speed)*200*self.get_step_size())
 
-		#set arbitrary change in period for each pulse
-		delta = 0.01
+		#set time cycle to change delay time
+		cycle = 0.01
+
+		#set change in delay time for each time cycle
+		delta = (end_delay-start_delay)/(time*percent)
 
 		#initialize delay variable
 		delay = start_delay
 
+		#begin pulse loop
 		num_pulses = 0
+		elapsed = 0
 		while delay < end_delay:
 			gpio.output(self.step_pin,gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin,gpio.LOW)
-			delay += delta
+
+			#add delay time to elapsed time
+			elapsed += delay
+			if elapsed > cycle:
+				#bump up delay time and reset elapsed
+				delay += delta
+				elapsed = 0
+
+			#increment number of pulses
 			num_pulses += 1
 
 		self.curr_speed = end_speed
@@ -128,7 +141,7 @@ class Motor():
 
 
 		#begin acceleration
-		#
+		acc_pulses = self.accelerate((dist/sec),.2,sec)
 
 
 		i  = 0
@@ -161,6 +174,7 @@ class Printer():
 		self.x = Motor(config_dict[0])
 		self.y = Motor(config_dict[1])
 		self.pump = Motor(config_dict[2])
+		self.acc = config_dict[3]["acceleration"]
 
 		#initial position
 		self.pos = [0.0, 0.0]
@@ -250,7 +264,6 @@ if __name__ == "__main__":
 	printer = Printer(config_dict)
 
 	# printer.go(400,-200)
-
 
 	printer.x.move(120,5,1)
 

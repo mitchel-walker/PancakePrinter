@@ -9,8 +9,7 @@
 		"m2":18
 	},
 	"calib":120,
-	"max_speed":60,
-	"acceleration":40
+	"max_speed":50,
 },
 {
 	"name":"y",
@@ -23,8 +22,7 @@
 		"m2":18
 	},
 	"calib":40,
-	"max_speed":60,
-	"acceleration":40
+	"max_speed":50,
 },
 {
 	"name":"p",
@@ -38,9 +36,9 @@
 	},
 	"calib":1.0,
 	"max_speed":200,
-	"acceleration":1
 },
 {
 	"name":"master",
-	"function":"printer"
+	"function":"printer",
+	"acceleration":0.2
 }]
