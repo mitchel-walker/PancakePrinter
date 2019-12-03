@@ -10,20 +10,15 @@ import re
 def run(printer, gcd_file):
 	#run through the 6 command options and call each corresponding command
 
-	max_x = 0
-	max_y = 0
-	
+	scale_x = 1.5217
+	scale_y = 1
+
 	for command in yield_commands(gcd_file):
 		print(command)
 		if len(command) == 0:
 			continue
 		elif command[0] == "G00":
-			printer.go(eval(command[1][1:]), eval(command[2][1:]))
-
-
-			max_x = max(eval(command[1][1:]),max_x)
-			max_y = max(eval(command[2][1:]),max_y)
-
+			printer.go(eval(command[1][1:])/scale_x, eval(command[2][1:])/scale_y)
 			continue
 		elif command[0] == "G4":
 			printer.motors_off()
