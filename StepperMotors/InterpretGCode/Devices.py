@@ -158,11 +158,11 @@ class Motor():
 
 		#return if time == 0 sec
 		if sec == 0:
-			return
+			return 0
 		#pause for time if dist = 0
 		if dist == 0:
 			sleep(sec)
-			return
+			return 0
 
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/(self.calib)
