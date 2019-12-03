@@ -178,6 +178,8 @@ class Motor():
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
+
+		self.stop()
 			
 
 
