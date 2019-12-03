@@ -10,7 +10,7 @@
 	},
 	"calib":120,
 	"max_speed":40,
-	"acceleration":0.2
+	"acceleration":0.1
 },
 {
 	"name":"y",
@@ -24,7 +24,7 @@
 	},
 	"calib":40,
 	"max_speed":40,
-	"acceleration":0.2
+	"acceleration":0.1
 },
 {
 	"name":"p",
@@ -38,7 +38,7 @@
 	},
 	"calib":1.0,
 	"max_speed":200,
-	"acceleration":0.2
+	"acceleration":0.1
 },
 {
 	"name":"master",
