@@ -213,19 +213,19 @@ class Printer():
 		#returns 2d tuple of (distance, time, direction) for ((x),(y))
 
 		#determine direction and distance of x and y
-		if end_x > self.pos[0]:
+		if end_x > self.x.pos:
 			dir_x = 1
-			dist_x = end_x - self.pos[0]
+			dist_x = end_x - self.x.pos
 		else:
 			dir_x = 0
-			dist_x = self.pos[0] - end_x
+			dist_x = self.x.pos - end_x
 
-		if end_y > self.pos[1]:
+		if end_y > self.y.pos:
 			dir_y = 1
-			dist_y = end_y - self.pos[1]
+			dist_y = end_y - self.y.pos
 		else:
 			dir_y = 0
-			dist_y = self.pos[1] - end_y
+			dist_y = self.y.pos - end_y
 
 		#determine the longest time either motor will take to go the distance
 		max_time = max((dist_x/self.x.max_spd),(dist_y/self.y.max_spd))
