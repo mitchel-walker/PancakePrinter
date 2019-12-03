@@ -96,6 +96,7 @@ class Motor():
 
 		#initialize delay variable
 		delay = start_delay
+		print("delay %d" % delay)
 
 		#begin pulse loop
 		num_pulses = 0
