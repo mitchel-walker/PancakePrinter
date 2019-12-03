@@ -39,7 +39,7 @@ class Motor():
 		}
 
 		#set object resolution string and microstep pin values
-		self.set_resolution('1/32')
+		self.set_resolution('half')
 
 
 	#setters and getters for mode pins
