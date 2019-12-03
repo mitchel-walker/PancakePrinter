@@ -9,9 +9,6 @@ import re
 class Motor():
 	def __init__(self, att_dict):
 		self.name = att_dict["name"]
-
-		print(self.name + " initialized")
-
 		self.dir_pin = att_dict["pins"]["dir"]
 		self.step_pin = att_dict["pins"]["step"]
 		self.mode_pins = (att_dict["pins"]["m0"],att_dict["pins"]["m1"],att_dict["pins"]["m2"])
@@ -233,8 +230,6 @@ class Printer():
 	def get_params(self, end_x,end_y):
 		#returns 2d tuple of (distance, time, direction) for ((x),(y))
 
-		print('params x', self.x.pos)
-		print('params y',self.y.pos)
 		#determine direction and distance of x and y
 		if end_x > self.x.pos:
 			dir_x = 1
@@ -270,6 +265,7 @@ class Printer():
 		move_x.start()
 		move_y.start()
 		sleep(params[0][1])
+		print(self.x.pos)
 
 	def pump_off(self):
 		return
