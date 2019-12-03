@@ -192,7 +192,6 @@ class Motor():
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
 
-		print(drift)
 		return drift
 			
 
@@ -251,6 +250,7 @@ class Printer():
 		drift_y = move_y.start()
 		sleep(params[0][1])
 
+		print(drift_x, drift_y)
 		#reset position
 		self.pos = [end_x + drift_x, end_y + drift_y]
 
