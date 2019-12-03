@@ -205,7 +205,9 @@ class Printer():
 	def __init__(self, config_dict):
 		#Initialize Motor Object
 		self.x = Motor(config_dict[0])
-		self.x.set_resolution('half')
+		self.x.set_resolution('full')
+		print(self.x.mode_pins)
+
 		self.y = Motor(config_dict[1])
 		self.pump = Motor(config_dict[2])
 
