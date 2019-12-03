@@ -79,6 +79,7 @@ class Motor():
 		#determine start delay time
 		if self.curr_speed == 0:
 			start_delay = 0.01
+			print("got to reset start delay")
 		else:
 			start_delay = self.calib/(abs(self.curr_speed)*200*self.get_step_size())
 
