@@ -138,7 +138,7 @@ class Motor():
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/(self.calib)
 		#set delay time
-		delay = sec/(num_pulses) - 0.00008
+		delay = sec/(num_pulses) - 0.0001
 
 		# ACCELERATION
 		if (self.direction != -1) and (self.direction != direct):
