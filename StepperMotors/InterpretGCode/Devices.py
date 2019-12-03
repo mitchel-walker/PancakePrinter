@@ -222,13 +222,10 @@ class Motor():
 class Printer():
 	def __init__(self, config_dict):
 		#Initialize Motor Object
-		inst_x = Motor(config_dict[0])
-		self.x = inst_x
+		self.x = Motor(config_dict[0])
 		self.x.set_resolution('1/4')
 
-		inst_y = Motor(config_dict[1])
-
-		self.y = inst_y
+		self.y = Motor(config_dict[1])
 		self.pump = Motor(config_dict[2])
 
 
