@@ -42,7 +42,7 @@ class Motor():
 		}
 
 		#set object resolution string and microstep pin values
-		self.set_resolution('1/8')
+		self.set_resolution('1/4')
 
 
 	#setters and getters for mode pins
@@ -160,10 +160,18 @@ class Motor():
 
 		#return if time == 0 sec
 		if sec == 0:
+			if self.name == "x":
+				ready_x = True
+			elif self.name == "y":
+				ready_y = True
 			return
 		#pause for time if dist = 0
 		if dist == 0:
 			sleep(sec)
+			if self.name == "x":
+				ready_x = True
+			elif self.name == "y":
+				ready_y = True
 			return
 
 		#set number of pulses
@@ -200,6 +208,11 @@ class Motor():
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
+
+		if self.name == "x":
+			ready_x = True
+		elif self.name == "y":
+			ready_y = True
 
 			
 
@@ -250,6 +263,12 @@ class Printer():
 
 	def go(self, end_x, end_y):
 		#function to move x and y motors simultaneously
+
+		global ready_x
+		global ready_y
+
+		ready_x = False
+		ready_y = False
 
 		#get parameters
 		params = self.get_params(end_x, end_y)
@@ -306,7 +325,7 @@ if __name__ == "__main__":
 	gpio.setup(output_pins,gpio.OUT)
 
 	printer = Printer(config_dict)
-	printer.x.set_resolution('half')
+	printer.x.set_resolution('1/4')
 
 	printer.x.move(100,4,1)
 	printer.x.move(100,4,0)
