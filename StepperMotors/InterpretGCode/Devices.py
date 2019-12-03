@@ -115,6 +115,8 @@ class Motor():
 
 		self.curr_speed = end_speed
 
+		print("got to acceleration")
+
 		return num_pulses
 
 	
@@ -141,7 +143,7 @@ class Motor():
 
 
 		#begin acceleration
-		#acc_pulses = self.accelerate((dist/sec),.4,sec)
+		acc_pulses = self.accelerate((dist/sec),.4,sec)
 
 
 		i  = 0
