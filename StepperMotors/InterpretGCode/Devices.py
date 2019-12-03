@@ -124,7 +124,7 @@ class Motor():
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/(self.calib*2)
 		#set delay time
-		delay = sec/(num_pulses)
+		delay = sec/(num_pulses*2)
 
 		#begin acceleration
 		#
