@@ -74,13 +74,13 @@ class Motor():
 		if self.curr_speed == 0:
 			start_delay = 0.01
 		else:
-			start_delay = self.calib/(abs(self.curr_speed)*200*self.get_step_size())
+			start_delay = self.calib/(self.curr_speed*200*self.get_step_size())
 
 		#determine end delay time
 		if end_speed == 0:
 			end_delay = 0.01
 		else:
-			end_delay = self.calib/(abs(end_speed)*200*self.get_step_size())
+			end_delay = self.calib/(end_speed*200*self.get_step_size())
 
 
 		#set time cycle to change delay time
