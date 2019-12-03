@@ -91,7 +91,7 @@ class Motor():
 		cycle = 0.01
 
 		#set change in delay time for each time cycle
-		delta = (end_delay-start_delay)/(time*percent)
+		delta = (end_delay-start_delay)*cycle/(time*percent)
 
 		print("delta: " + str(delta))
 
