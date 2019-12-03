@@ -65,6 +65,8 @@ if __name__ == "__main__":
 	printer = Printer(config_dict)
 
 	#establish global ready_x and ready_y
+	global ready_x
+	global ready_y
 	ready_x = True
 	ready_y = True
 
