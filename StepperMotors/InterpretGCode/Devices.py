@@ -117,7 +117,7 @@ class Motor():
 		return num_pulses
 
 	def stop(self):
-		self.accelerate(0,1)
+		self.accelerate(0,2.5)
 		self.speed = 0
 		self.direction = -1
 
@@ -171,8 +171,6 @@ class Motor():
 		self.direction = direct
 
 		acc_pulses = self.accelerate((dist/sec), sec)
-		print(acc_pulses)
-		print(self.get_acc_pulses(sec,0,dist/sec))
 
 		i  = 0
 		while i < num_pulses-acc_pulses:
