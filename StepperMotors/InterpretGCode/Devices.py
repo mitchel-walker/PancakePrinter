@@ -15,7 +15,10 @@ class Motor():
 		self.calib = att_dict["calib"]
 		self.max_spd = att_dict["max_speed"]
 		self.acc = att_dict["acceleration"]
+
+		#set current speed and direction
 		self.curr_speed = 0
+		self.direction = -1
 
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
@@ -113,7 +116,9 @@ class Motor():
 		#return the number of pulses sent during acceleration
 		return num_pulses
 
-	
+	def stop(self):
+		self.speed = 0
+		self.direction = -1
 
 	#move a single motor
 	def move(self, dist, sec, direct):
@@ -127,13 +132,23 @@ class Motor():
 			sleep(sec)
 			return
 
-		#set direction pin output
-		gpio.output(self.dir_pin, direct)
+
 
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/(self.calib)
 		#set delay time
 		delay = sec/(num_pulses)
+
+		# ACCELERATION
+		if (self.direction != -1) and (self.direction != direct):
+			#if motor must change direction, stop first
+			self.accelerate(0, sec)
+
+		#set direction pin and accelerate to speed
+		gpio.output(self.dir_pin, direct)
+		self.direction = direct
+		acc_pulses = self.accelerate
+
 
 		#get acceleration pulses
 		acc_pulses = self.accelerate((dist/sec), sec)
@@ -247,6 +262,7 @@ if __name__ == "__main__":
 	# printer.go(400,-200)
 
 	printer.x.move(120,2,1)
+	printer.x.move(120,2,0)
 
 
 	gpio.cleanup()
