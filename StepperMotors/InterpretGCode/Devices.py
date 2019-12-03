@@ -14,11 +14,8 @@ class Motor():
 		self.mode_pins = (att_dict["pins"]["m0"],att_dict["pins"]["m1"],att_dict["pins"]["m2"])
 		self.calib = att_dict["calib"]
 		self.max_spd = att_dict["max_speed"]
-		self.curr_speed = 0
 		self.acc = att_dict["acceleration"]
-
-		#initialize pwm object
-		# self.initialize_pulses()
+		self.curr_speed = 0
 
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
@@ -41,11 +38,6 @@ class Motor():
 		#set object resolution string and microstep pin values
 		self.set_resolution('1/4')
 
-
-	#must initialize pwm object with duty cycle 0 (arbitrary frequency 100 is set)
-	def initialize_pulses(self):
-		self.pulses = gpio.PWM(self.step_pin, 100)
-		self.pulses.start(0)
 
 	#setters and getters for mode pins
 	def set_mode_pins(self):
@@ -70,9 +62,9 @@ class Motor():
 		self.set_mode_pins()
 
 
-	def accelerate(self, hold_speed, end_speed, time):
+	def accelerate(self, end_speed, time):
 		#return 0 if no acceleration is needed
-		if (-10 <= self.curr_speed - hold_speed <= 10) or (time < 0.02):
+		if (-10 <= self.curr_speed - end_speed <= 10) or (time < 0.02):
 			return 0
 
 		#determine start delay time
@@ -82,10 +74,10 @@ class Motor():
 			start_delay = self.calib/(abs(self.curr_speed)*200*self.get_step_size())
 
 		#determine end delay time
-		if hold_speed == 0:
+		if end_speed == 0:
 			end_delay = 0.
 		else:
-			end_delay = self.calib/(abs(hold_speed)*200*self.get_step_size())
+			end_delay = self.calib/(abs(end_speed)*200*self.get_step_size())
 
 
 		#set time cycle to change delay time
@@ -98,7 +90,6 @@ class Motor():
 		delay = start_delay
 
 		
-
 		#begin pulse loop
 		num_pulses = 0
 		elapsed = 0
@@ -119,6 +110,7 @@ class Motor():
 
 		self.curr_speed = end_speed
 
+		#return the number of pulses sent during acceleration
 		return num_pulses
 
 	
@@ -143,10 +135,8 @@ class Motor():
 		#set delay time
 		delay = sec/(num_pulses)
 
-
-		#begin acceleration
-		acc_pulses = self.accelerate((dist/sec),.2,sec)
-
+		#get acceleration pulses
+		acc_pulses = self.accelerate((dist/sec), sec)
 
 		i  = 0
 		while i < num_pulses-acc_pulses:
@@ -155,18 +145,6 @@ class Motor():
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
 			
-		'''
-		freq = (dist*200*self.get_step_size())/(self.calib*sec)
-		
-
-		#change pulses frequency and set duty cycle to 50
-		self.pulses.ChangeFrequency(freq)
-		self.pulses.ChangeDutyCycle(50)
-		sleep(sec)
-		self.pulses.ChangeDutyCycle(0)
-		#when time is waited, reset duty cycle to 0
-		'''
-
 
 
 
