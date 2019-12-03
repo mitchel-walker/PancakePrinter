@@ -23,6 +23,9 @@ class Motor():
 		#set self.cycle time for acceleration
 		self.cycle = 0.01
 
+		#set position
+		self.pos = 0
+
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
 		'half':(1,0,0),
@@ -170,14 +173,13 @@ class Motor():
 		delay = sec/(num_pulses)
 
 		# ACCELERATION
-		drift = 0
 		if (self.direction != -1) and (self.direction != direct):
 			#if motor must change direction, first set speed to zero
 			if self.direction == 1:
 				drift = self.stop()
 			else:
-				drift = -self.stop()
-
+				drift == -self.stop()
+			
 
 		#set direction pin and accelerate to speed
 		gpio.output(self.dir_pin, direct)
@@ -191,10 +193,8 @@ class Motor():
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
-
-		print("we're here")
-		return drift
 			
+		self.pos = dist + drift
 
 
 
@@ -207,9 +207,6 @@ class Printer():
 		self.x.set_resolution('half')
 		self.y = Motor(config_dict[1])
 		self.pump = Motor(config_dict[2])
-
-		#initial position
-		self.pos = [0.0, 0.0]
 
 
 	def get_params(self, end_x,end_y):
@@ -247,13 +244,9 @@ class Printer():
 		move_y = Process(target = self.y.move, args = params[1])
 
 		#run processes
-		drift_x = move_x.start()
-		drift_y = move_y.start()
+		move_x.start()
+		move_y.start()
 		sleep(params[0][1])
-
-		print(drift_x, drift_y)
-		#reset position
-		self.pos = [end_x + drift_x, end_y + drift_y]
 
 	def pump_off(self):
 		return
