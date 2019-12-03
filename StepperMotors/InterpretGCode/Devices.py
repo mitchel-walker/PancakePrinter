@@ -221,7 +221,7 @@ class Printer():
 		#Initialize Motor Object
 		self.x = Motor(config_dict[0])
 		self.x.set_resolution('1/4')
-		self.x.pos = 0
+		print("init printer x",hex(id(self.x.pos)))
 
 		self.y = Motor(config_dict[1])
 		self.pump = Motor(config_dict[2])
