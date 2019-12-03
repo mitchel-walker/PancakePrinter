@@ -83,10 +83,13 @@ class Motor():
 		#determine end delay time
 		if end_speed == 0:
 			end_delay = 0.
-			print("reset end delay")
 		else:
 			end_delay = self.calib/(abs(end_speed)*200*self.get_step_size())
 
+
+		print("start delay, end delay: %d, %d" % (start_delay, end_delay))
+
+		
 		#set time cycle to change delay time
 		cycle = 0.01
 
@@ -96,7 +99,7 @@ class Motor():
 		#initialize delay variable
 		delay = start_delay
 
-		print("start delay, end delay: %d, %d" % (start_delay, end_delay))
+		
 
 		#begin pulse loop
 		num_pulses = 0
