@@ -141,7 +141,7 @@ class Motor():
 
 
 		#begin acceleration
-		acc_pulses = self.accelerate((dist/sec),.4,sec)
+		#acc_pulses = self.accelerate((dist/sec),.4,sec)
 
 
 		i  = 0
@@ -230,9 +230,9 @@ class Printer():
 
 	def motors_off(self):
 		#accelerate each motor to speed 0
-		self.x.accelerate(0)
-		self.y.accelerate(0)
-		
+		# self.x.accelerate(0)
+		# self.y.accelerate(0)
+		return
 
 
 
