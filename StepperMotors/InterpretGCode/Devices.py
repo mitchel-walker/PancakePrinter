@@ -201,6 +201,8 @@ class Motor():
 		else:
 			delta = drift + dist
 
+		self.pos += delta
+
 
 
 
