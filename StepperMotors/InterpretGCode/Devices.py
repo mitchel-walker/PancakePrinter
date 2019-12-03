@@ -141,8 +141,8 @@ class Motor():
 
 		# ACCELERATION
 		if (self.direction != -1) and (self.direction != direct):
-			#if motor must change direction, stop first
-			self.accelerate(0, sec)
+			#if motor must change direction, first set speed to zero
+			self.speed = 0
 
 		#set direction pin and accelerate to speed
 		gpio.output(self.dir_pin, direct)
@@ -150,11 +150,9 @@ class Motor():
 		acc_pulses = self.accelerate
 
 
-		print(1/delay)
 		#get acceleration pulses
 		acc_pulses = self.accelerate((dist/sec), sec)
 
-		print(acc_pulses)
 
 		i  = 0
 		while i < num_pulses-acc_pulses:
@@ -262,9 +260,7 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	# printer.go(400,-200)
-
-	printer.x.move(120,3,1)
+	printer.x.move(120,2,1)
 	printer.x.move(120,2,0)
 	printer.x.stop()
 
