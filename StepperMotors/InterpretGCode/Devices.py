@@ -211,8 +211,8 @@ class Motor():
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
 
-		
 		if self.name == "x":
+			print('it should work matey')
 			ready_x = True
 		elif self.name == "y":
 			ready_y = True
