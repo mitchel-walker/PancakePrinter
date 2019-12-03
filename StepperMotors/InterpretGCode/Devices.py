@@ -189,6 +189,14 @@ class Motor():
 
 		acc_pulses = self.accelerate((dist/sec), sec)
 
+		#set change in position
+		if direct == 0:
+			delta = drift - dist
+		else:
+			delta = drift + dist
+
+		self.pos += delta
+
 		i  = 0
 		while i < num_pulses-acc_pulses:
 			gpio.output(self.step_pin, gpio.HIGH)
@@ -197,15 +205,8 @@ class Motor():
 			i+= 1
 			
 
-		#set change in position
-		if direct == 0:
-			delta = drift - dist
-		else:
-			delta = drift + dist
+		
 
-		print(delta)
-
-		self.pos = self.pos + delta
 
 
 
