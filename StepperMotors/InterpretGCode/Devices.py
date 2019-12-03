@@ -67,7 +67,7 @@ class Motor():
 
 	def accelerate(self, end_speed, time):
 		#return 0 if no acceleration is needed
-		if (-10 <= self.curr_speed - end_speed <= 10) or (time < 0.02):
+		if time < 0.02:
 			return 0
 
 		#determine start delay time
@@ -264,7 +264,7 @@ if __name__ == "__main__":
 
 	# printer.go(400,-200)
 
-	printer.x.move(120,2,1)
+	printer.x.move(120,3,1)
 	printer.x.move(120,2,0)
 	printer.x.stop()
 
