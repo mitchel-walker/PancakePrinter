@@ -9,7 +9,7 @@
 		"m2":18
 	},
 	"calib":120,
-	"max_speed":50,
+	"max_speed":60,
 	"acceleration":0.1
 },
 {
@@ -23,7 +23,7 @@
 		"m2":18
 	},
 	"calib":40,
-	"max_speed":50,
+	"max_speed":60,
 	"acceleration":0.1
 },
 {
