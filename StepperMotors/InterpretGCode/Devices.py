@@ -202,8 +202,8 @@ class Motor():
 			delta = drift + dist
 		
 		print(self.pos)
-		
-		self.pos += delta
+
+		self.pos = self.pos + delta
 
 
 
