@@ -9,6 +9,9 @@ import re
 class Motor():
 	def __init__(self, att_dict):
 		self.name = att_dict["name"]
+
+		print("init motor location", hex(id(self)))
+
 		self.dir_pin = att_dict["pins"]["dir"]
 		self.step_pin = att_dict["pins"]["step"]
 		self.mode_pins = (att_dict["pins"]["m0"],att_dict["pins"]["m1"],att_dict["pins"]["m2"])
@@ -221,7 +224,7 @@ class Printer():
 		#Initialize Motor Object
 		self.x = Motor(config_dict[0])
 		self.x.set_resolution('1/4')
-		print("init printer x",hex(id(self.x.pos)))
+		print("init printer x",hex(id(self.x)))
 
 		self.y = Motor(config_dict[1])
 		self.pump = Motor(config_dict[2])
