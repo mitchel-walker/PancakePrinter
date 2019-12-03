@@ -20,6 +20,9 @@ class Motor():
 		self.curr_speed = 0
 		self.direction = -1
 
+		#set self.cycle time for acceleration
+		self.cycle = 0.01
+
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
 		'half':(1,0,0),
@@ -65,9 +68,9 @@ class Motor():
 		self.set_mode_pins()
 
 
-	def accelerate(self, end_speed, time):
+	def accelerate(self, end_speed, sec):
 		#return 0 if no acceleration is needed
-		if time < 0.02:
+		if sec < 0.02:
 			return 0
 
 		#determine start delay time
@@ -83,11 +86,8 @@ class Motor():
 			end_delay = self.calib/(end_speed*200*self.get_step_size())
 
 
-		#set time cycle to change delay time
-		cycle = 0.01
-
 		#set change in delay time for each time cycle
-		delta = (end_delay-start_delay)*cycle/(time*self.acc)
+		delta = (end_delay-start_delay)*self.cycle/(sec*self.acc)
 
 		#initialize delay variable
 		delay = start_delay
@@ -103,7 +103,7 @@ class Motor():
 
 			#add delay time to elapsed time
 			elapsed += delay
-			if elapsed > cycle:
+			if elapsed >= self.cycle:
 				#bump up delay time and reset elapsed
 				delay += delta
 				elapsed = 0
@@ -121,6 +121,29 @@ class Motor():
 		self.speed = 0
 		self.direction = -1
 
+
+	def get_acc_pulses(self, sec, start_speed, end_speed):
+		#determine starting frequency
+		if start_speed == 0:
+			start_freq = 0.01
+		else:
+			start_freq = (self.curr_speed*200*self.get_step_size())/self.calib
+
+		if end_speed == 0:
+			end_freq = 0.01
+		else:
+			end_freq = (self.curr_speed*200*self.get_step_size())/self.calib
+
+		#determine number of cycles that will happen during acceleration
+		n = sec*self.acc//self.cycle
+
+		#determine delta - change in frequency for each cycle change
+		delta = (end_freq-start_freq)*self.cycle/(sec*self.acc)
+
+		#return number of pulses
+		return n*start_freq*self.cycle + 0.5*(n**2)*delta*self.cycle
+
+
 	#move a single motor
 	def move(self, dist, sec, direct):
 		#move motor a given distance in time (sec) in direction (direct)
@@ -132,7 +155,6 @@ class Motor():
 		if dist == 0:
 			sleep(sec)
 			return
-
 
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/(self.calib)
@@ -147,10 +169,7 @@ class Motor():
 		#set direction pin and accelerate to speed
 		gpio.output(self.dir_pin, direct)
 		self.direction = direct
-		acc_pulses = self.accelerate
 
-
-		#get acceleration pulses
 		acc_pulses = self.accelerate((dist/sec), sec)
 
 		i  = 0
