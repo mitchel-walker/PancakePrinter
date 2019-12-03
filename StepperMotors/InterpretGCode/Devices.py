@@ -77,7 +77,6 @@ class Motor():
 		#determine start delay time
 		if self.curr_speed == 0:
 			start_delay = 0.01
-			print(start_delay)
 		else:
 			start_delay = self.calib/(abs(self.curr_speed)*200*self.get_step_size())
 
@@ -86,10 +85,6 @@ class Motor():
 			end_delay = 0.
 		else:
 			end_delay = self.calib/(abs(end_speed)*200*self.get_step_size())
-			print(end_delay)
-
-
-		print("start delay, end delay: %f, %f" % (start_delay, end_delay))
 
 
 		#set time cycle to change delay time
@@ -97,6 +92,8 @@ class Motor():
 
 		#set change in delay time for each time cycle
 		delta = (end_delay-start_delay)/(time*percent)
+
+		print("delta: " + str(delta))
 
 		#initialize delay variable
 		delay = start_delay
