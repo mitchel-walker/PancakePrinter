@@ -196,7 +196,7 @@ class Motor():
 			delta = drift + dist
 
 		self.pos += delta
-		print(self.pos)
+		print(self.name,self.pos)
 
 
 		i  = 0
