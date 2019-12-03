@@ -70,6 +70,7 @@ class Motor():
 
 
 	def accelerate(self, end_speed, percent, time):
+		print(self.curr_speed)
 		#return 0 if no acceleration is needed
 		if (-10 <= self.curr_speed - end_speed <= 10) or (time < 0.02):
 			return 0
