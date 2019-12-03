@@ -162,11 +162,11 @@ class Motor():
 
 		#return if time == 0 sec
 		if sec == 0:
-			return 0
+			return
 		#pause for time if dist = 0
 		if dist == 0:
 			sleep(sec)
-			return 0
+			return
 
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/(self.calib)
@@ -180,7 +180,7 @@ class Motor():
 			if self.direction == 1:
 				drift = self.stop()
 			else:
-				drift == -self.stop()
+				drift = -self.stop()
 			
 
 		#set direction pin and accelerate to speed
@@ -196,6 +196,7 @@ class Motor():
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
 			
+		print(drift)
 		#set change in position
 		if direct == 0:
 			delta = drift - dist
