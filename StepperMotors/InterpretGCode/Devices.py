@@ -196,7 +196,7 @@ class Motor():
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
 			
-		print(drift)
+		print(delta)
 		#set change in position
 		if direct == 0:
 			delta = drift - dist
