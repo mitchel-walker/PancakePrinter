@@ -246,6 +246,7 @@ class Printer():
 	def go(self, end_x, end_y):
 		#function to move x and y motors simultaneously
 
+		print(self.x.pos)
 		#get parameters
 		params = self.get_params(end_x, end_y)
 
