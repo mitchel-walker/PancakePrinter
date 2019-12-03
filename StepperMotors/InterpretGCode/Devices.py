@@ -38,7 +38,7 @@ class Motor():
 		}
 
 		#set object resolution string and microstep pin values
-		self.set_resolution('half')
+		self.set_resolution('1/4')
 
 
 	#must initialize pwm object with duty cycle 0 (arbitrary frequency 100 is set)
@@ -126,8 +126,6 @@ class Motor():
 		#set delay time
 		delay = sec/(num_pulses)
 
-		print(num_pulses/self.get_step_size())
-
 
 		#begin acceleration
 		#
@@ -139,8 +137,6 @@ class Motor():
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
-
-		print(i)
 			
 		'''
 		freq = (dist*200*self.get_step_size())/(self.calib*sec)
@@ -256,7 +252,7 @@ if __name__ == "__main__":
 	# printer.go(400,-200)
 
 
-	printer.x.move(100,5,1)
+	printer.x.move(120,5,1)
 
 
 	gpio.cleanup()
