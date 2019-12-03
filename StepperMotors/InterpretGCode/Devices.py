@@ -139,6 +139,8 @@ class Motor():
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
+
+		print(i)
 			
 		'''
 		freq = (dist*200*self.get_step_size())/(self.calib*sec)
