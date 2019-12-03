@@ -219,6 +219,8 @@ class Printer():
 		self.y = Motor(config_dict[1])
 		self.pump = Motor(config_dict[2])
 
+		self.pos = [0,0]
+
 
 	def get_params(self, end_x,end_y):
 		#returns 2d tuple of (distance, time, direction) for ((x),(y))
