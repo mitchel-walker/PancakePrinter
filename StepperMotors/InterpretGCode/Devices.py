@@ -173,6 +173,7 @@ class Motor():
 		delay = sec/(num_pulses)
 
 		# ACCELERATION
+		drift = 0
 		if (self.direction != -1) and (self.direction != direct):
 			#if motor must change direction, first set speed to zero
 			if self.direction == 1:
