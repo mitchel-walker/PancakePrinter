@@ -192,6 +192,7 @@ class Motor():
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
 
+		print("we're here")
 		return drift
 			
 
