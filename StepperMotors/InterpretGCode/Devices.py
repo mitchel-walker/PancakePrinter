@@ -273,7 +273,7 @@ class Printer():
 		move_x.start()
 		move_y.start()
 		
-		while ! ready_x or ! ready_y:
+		while (not ready_x) or (not ready_y):
 			sleep(.1)
 
 		global ready_x
