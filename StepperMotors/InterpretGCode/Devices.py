@@ -212,9 +212,10 @@ class Motor():
 			i+= 1
 
 		if self.name == "x":
-			print('it should work matey')
+			print('it should work for x matey')
 			ready_x = True
 		elif self.name == "y":
+			print('it should work for y matey')
 			ready_y = True
 			
 
