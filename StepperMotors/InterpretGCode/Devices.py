@@ -130,6 +130,7 @@ class Motor():
 			return
 		#pause for time if dist = 0
 		if dist == 0:
+			print("sleeping for time: " + str(sec))
 			sleep(sec)
 			return
 
@@ -153,13 +154,16 @@ class Motor():
 		#get acceleration pulses
 		acc_pulses = self.accelerate((dist/sec), sec)
 
-
+		start_time = time()
 		i  = 0
 		while i < num_pulses-acc_pulses:
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
+		end_time = time()
+
+		print("actual time: " + str(end_time-start_time))
 			
 
 
