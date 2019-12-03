@@ -160,18 +160,10 @@ class Motor():
 
 		#return if time == 0 sec
 		if sec == 0:
-			if self.name == "x":
-				ready_x = True
-			elif self.name == "y":
-				ready_y = True
 			return
 		#pause for time if dist = 0
 		if dist == 0:
 			sleep(sec)
-			if self.name == "x":
-				ready_x = True
-			elif self.name == "y":
-				ready_y = True
 			return
 
 		#set number of pulses
@@ -208,11 +200,6 @@ class Motor():
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
-
-		if self.name == "x":
-			ready_x = True
-		elif self.name == "y":
-			ready_y = True
 
 			
 
@@ -263,12 +250,6 @@ class Printer():
 
 	def go(self, end_x, end_y):
 		#function to move x and y motors simultaneously
-
-		global ready_x
-		global ready_y
-
-		ready_x = False
-		ready_y = False
 
 		#get parameters
 		params = self.get_params(end_x, end_y)
