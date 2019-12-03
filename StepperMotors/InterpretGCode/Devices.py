@@ -78,7 +78,7 @@ class Motor():
 
 		#determine end delay time
 		if end_speed == 0:
-			end_delay = 0.
+			end_delay = 0.01
 		else:
 			end_delay = self.calib/(abs(end_speed)*200*self.get_step_size())
 
