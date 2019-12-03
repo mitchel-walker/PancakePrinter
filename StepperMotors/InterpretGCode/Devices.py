@@ -150,9 +150,9 @@ class Motor():
 		acc_pulses = self.accelerate
 
 
+		print(1/delay)
 		#get acceleration pulses
 		acc_pulses = self.accelerate((dist/sec), sec)
-		print(acc_pulses)
 
 		i  = 0
 		while i < num_pulses-acc_pulses:
