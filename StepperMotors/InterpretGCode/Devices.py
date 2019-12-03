@@ -171,6 +171,8 @@ class Motor():
 		self.direction = direct
 
 		acc_pulses = self.accelerate((dist/sec), sec)
+		print(acc_pulses)
+		print(self.get_acc_pulses(sec,0,dist/sec))
 
 		i  = 0
 		while i < num_pulses-acc_pulses:
