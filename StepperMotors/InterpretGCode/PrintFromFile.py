@@ -10,7 +10,7 @@ import re
 def run(printer, gcd_file):
 	#run through the 6 command options and call each corresponding command
 
-	scale_x = 1.5217
+	scale_x = 2
 	scale_y = 1
 
 	for command in yield_commands(gcd_file):
