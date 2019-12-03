@@ -117,7 +117,7 @@ class Motor():
 		return num_pulses
 
 	def stop(self):
-		self.accelerate(0,0.05)
+		self.accelerate(0,1)
 		self.speed = 0
 		self.direction = -1
 
