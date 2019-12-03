@@ -103,7 +103,7 @@ class Motor():
 		#begin pulse loop
 		num_pulses = 0
 		elapsed = 0
-		while abs(delay - end_delay) > delta:
+		while abs(delay - end_delay) > abs(delta):
 			gpio.output(self.step_pin,gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin,gpio.LOW)
