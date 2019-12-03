@@ -264,7 +264,7 @@ class Printer():
 		move_x.start()
 		move_y.start()
 		sleep(params[0][1])
-		print("x",hex(id(self.x.pos)))
+		print("printer x.pos",hex(id(self.x.pos)))
 
 	def pump_off(self):
 		return
