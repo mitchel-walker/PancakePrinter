@@ -20,11 +20,11 @@ def time_while():
 	acc_pulses = 1
 	i  = 0
 	start_time = time()
-		while i < num_pulses-acc_pulses:
-			gpio.output(self.step_pin, gpio.HIGH)
-			sleep(delay)
-			gpio.output(self.step_pin, gpio.LOW)
-			i+= 1
+	while i < num_pulses-acc_pulses:
+		gpio.output(self.step_pin, gpio.HIGH)
+		sleep(delay)
+		gpio.output(self.step_pin, gpio.LOW)
+		i+= 1
 
 	return (time()-start_time)/10
 
