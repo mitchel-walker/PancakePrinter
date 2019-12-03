@@ -173,9 +173,10 @@ class Motor():
 		drift = 0
 		if (self.direction != -1) and (self.direction != direct):
 			#if motor must change direction, first set speed to zero
-			drift = self.stop()
-			if direct == 1:
-				drift = -drift
+			if self.direction == 1:
+				drift = self.stop()
+			else:
+				drift = -self.stop()
 
 
 		#set direction pin and accelerate to speed
@@ -191,6 +192,7 @@ class Motor():
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
 
+		print(drift)
 		return drift
 			
 
