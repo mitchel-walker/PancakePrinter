@@ -283,11 +283,8 @@ class Printer():
 		move_y.start()
 		
 		while (not ready_x) or (not ready_y):
+			print(ready_x, ready_y)
 			sleep(.1)
-
-		
-		ready_x = True
-		ready_y = True
 
 		
 		self.pos = [end_x, end_y]
