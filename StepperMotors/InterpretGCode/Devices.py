@@ -126,7 +126,7 @@ class Motor():
 		#set delay time
 		delay = sec/(num_pulses)
 
-		print(self.calib)
+		print(num_pulses/self.get_step_size())
 
 
 		#begin acceleration
