@@ -23,9 +23,6 @@ class Motor():
 		#set self.cycle time for acceleration
 		self.cycle = 0.01
 
-		#set position
-		self.pos = 0
-
 		#resolution dictionairy
 		self.res_dict = {'full':(0,0,0),
 		'half':(1,0,0),
@@ -155,8 +152,6 @@ class Motor():
 		#return number of pulses
 		return n*start_freq*self.cycle + 0.5*(n**2)*delta*self.cycle
 
-	def get_pos(self):
-		return self.pos
 
 	#move a single motor
 	def move(self, dist, sec, direct):
@@ -197,8 +192,6 @@ class Motor():
 		else:
 			delta = drift + dist
 
-		self.pos += delta
-
 
 		i  = 0
 		while i < num_pulses-acc_pulses:
@@ -231,19 +224,19 @@ class Printer():
 		#returns 2d tuple of (distance, time, direction) for ((x),(y))
 
 		#determine direction and distance of x and y
-		if end_x > self.x.pos:
+		if end_x > self.pos[0]:
 			dir_x = 1
-			dist_x = end_x - self.x.pos
+			dist_x = end_x - self.pos[0]
 		else:
 			dir_x = 0
-			dist_x = self.x.pos - end_x
+			dist_x = self.pos[0] - end_x
 
-		if end_y > self.y.pos:
+		if end_y > self.pos[1]:
 			dir_y = 1
-			dist_y = end_y - self.y.pos
+			dist_y = end_y - self.pos[1]
 		else:
 			dir_y = 0
-			dist_y = self.y.pos - end_y
+			dist_y = self.pos[1] - end_y
 
 		#determine the longest time either motor will take to go the distance
 		max_time = max((dist_x/self.x.max_spd),(dist_y/self.y.max_spd))
@@ -265,7 +258,8 @@ class Printer():
 		move_x.start()
 		move_y.start()
 		sleep(params[0][1])
-		print(self.x.get_pos())
+		
+		self.pos = [end_x, end_y]
 
 	def pump_off(self):
 		return
