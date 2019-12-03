@@ -200,14 +200,6 @@ class Motor():
 			delta = drift - dist
 		else:
 			delta = drift + dist
-		print("\n\n\n\n\n")
-		print(self.pos)
-
-		self.pos = self.pos + delta
-
-		print(self.pos)
-
-		print("\n\n\n\n\n")
 
 
 
@@ -261,6 +253,7 @@ class Printer():
 
 		#run processes
 		move_x.start()
+		print(self.x.pos)
 		move_y.start()
 		sleep(params[0][1])
 
