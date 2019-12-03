@@ -55,13 +55,6 @@ class Motor():
 	def get_mode(self):
 		return self.res_dict[self.resolution]
 
-	#setters and getters for position
-	def change_position(self, delta):
-		self.pos += delta
-
-	def get_position(self):
-		return self.pos
-
 
 	#getter for step size
 	def get_step_size(self):
@@ -209,7 +202,7 @@ class Motor():
 		else:
 			delta = drift + dist
 
-		self.change_position(delta)
+		self.pos += delta
 
 
 
@@ -231,19 +224,19 @@ class Printer():
 		#returns 2d tuple of (distance, time, direction) for ((x),(y))
 
 		#determine direction and distance of x and y
-		if end_x > self.x.get_position():
+		if end_x > self.x.pos:
 			dir_x = 1
-			dist_x = end_x - self.x.get_position()
+			dist_x = end_x - self.x.pos
 		else:
 			dir_x = 0
-			dist_x = self.x.get_position() - end_x
+			dist_x = self.x.pos - end_x
 
-		if end_y > self.y.get_position():
+		if end_y > self.y.pos:
 			dir_y = 1
-			dist_y = end_y - self.y.get_position()
+			dist_y = end_y - self.y.pos
 		else:
 			dir_y = 0
-			dist_y = self.y.get_position() - end_y
+			dist_y = self.y.pos - end_y
 
 		#determine the longest time either motor will take to go the distance
 		max_time = max((dist_x/self.x.max_spd),(dist_y/self.y.max_spd))
@@ -254,7 +247,6 @@ class Printer():
 	def go(self, end_x, end_y):
 		#function to move x and y motors simultaneously
 
-		print(self.x.get_position())
 		#get parameters
 		params = self.get_params(end_x, end_y)
 
@@ -264,7 +256,6 @@ class Printer():
 
 		#run processes
 		move_x.start()
-		print(self.x.get_position())
 		move_y.start()
 		sleep(params[0][1])
 
