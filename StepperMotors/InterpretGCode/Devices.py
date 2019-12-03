@@ -8,6 +8,10 @@ import re
 #create motor classes
 class Motor():
 	def __init__(self, att_dict):
+
+		print("motor",self)
+
+
 		self.name = att_dict["name"]
 		self.dir_pin = att_dict["pins"]["dir"]
 		self.step_pin = att_dict["pins"]["step"]
@@ -197,8 +201,6 @@ class Motor():
 
 		self.pos += delta
 
-		print("move",self.name,self.pos)
-
 
 		i  = 0
 		while i < num_pulses-acc_pulses:
@@ -221,6 +223,7 @@ class Printer():
 	def __init__(self, config_dict):
 		#Initialize Motor Object
 		self.x = Motor(config_dict[0])
+		print("printer",self.x)
 		self.x.set_resolution('1/4')
 
 		self.y = Motor(config_dict[1])
@@ -265,7 +268,6 @@ class Printer():
 		move_x.start()
 		move_y.start()
 		sleep(params[0][1])
-		print(self.x.pos)
 
 	def pump_off(self):
 		return
