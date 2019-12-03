@@ -39,9 +39,6 @@ def run(printer, gcd_file):
 		else:
 			continue
 
-	print("\n\n\n\n")
-	print(max_x, max_y)
-
 
 
 if __name__ == "__main__":
