@@ -125,12 +125,12 @@ class Motor():
 	def get_acc_pulses(self, sec, start_speed, end_speed):
 		#determine starting frequency
 		if start_speed == 0:
-			start_freq = 0.01
+			start_freq = 0.1
 		else:
 			start_freq = (self.curr_speed*200*self.get_step_size())/self.calib
 
 		if end_speed == 0:
-			end_freq = 0.01
+			end_freq = 0.1
 		else:
 			end_freq = (self.curr_speed*200*self.get_step_size())/self.calib
 
