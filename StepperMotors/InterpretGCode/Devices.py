@@ -127,7 +127,6 @@ class Motor():
 		self.speed = 0
 		self.direction = -1
 		drift = (num_pulses*self.calib)/(200*self.get_step_size())
-		print(drift)
 
 		return drift
 
@@ -196,7 +195,7 @@ class Motor():
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
 			
-		self.pos = dist + drift
+		self.pos += (dist + drift)
 
 
 
