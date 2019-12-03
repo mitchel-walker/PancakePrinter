@@ -232,6 +232,8 @@ class Printer():
 	def get_params(self, end_x,end_y):
 		#returns 2d tuple of (distance, time, direction) for ((x),(y))
 
+		print('x', self.x.pos)
+		print('y',self.y.pos)
 		#determine direction and distance of x and y
 		if end_x > self.x.pos:
 			dir_x = 1
