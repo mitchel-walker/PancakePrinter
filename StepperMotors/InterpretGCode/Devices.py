@@ -185,7 +185,8 @@ class Motor():
 		gpio.output(self.dir_pin, direct)
 		self.direction = direct
 
-		acc_pulses = self.accelerate((dist/sec), sec)
+		#acc_pulses = self.accelerate((dist/sec), sec)
+		acc_pulses = 0
 
 		#set change in position
 		if direct == 0:
