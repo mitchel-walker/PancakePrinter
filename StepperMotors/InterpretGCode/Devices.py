@@ -70,8 +70,6 @@ class Motor():
 
 
 	def accelerate(self, end_speed, percent, time):
-		print(self.curr_speed)
-		print(end_speed)
 		#return 0 if no acceleration is needed
 		if (-10 <= self.curr_speed - end_speed <= 10) or (time < 0.02):
 			return 0
@@ -97,7 +95,8 @@ class Motor():
 
 		#initialize delay variable
 		delay = start_delay
-		print("delay differnce %d" % (end_delay-start_delay))
+
+		print("start delay, end delay: %d, %d" % (start_delay, end_delay))
 
 		#begin pulse loop
 		num_pulses = 0
