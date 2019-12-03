@@ -144,6 +144,7 @@ class Motor():
 
 		#begin acceleration
 		acc_pulses = self.accelerate((dist/sec),.4,sec)
+		print(acc_pulses)
 
 
 		i  = 0
