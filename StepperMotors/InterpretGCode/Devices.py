@@ -261,8 +261,6 @@ class Printer():
 		move_x.start()
 		move_y.start()
 		sleep(params[0][1])
-		move_x.terminate()
-		move_y.terminate()
 
 	def pump_off(self):
 		return
