@@ -127,6 +127,7 @@ class Motor():
 		self.speed = 0
 		self.direction = -1
 		drift = (num_pulses*self.calib)/(200*self.get_step_size())
+		print(drift)
 
 		return drift
 
