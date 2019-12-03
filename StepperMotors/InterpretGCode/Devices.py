@@ -261,6 +261,8 @@ class Printer():
 
 	def go(self, end_x, end_y):
 		#function to move x and y motors simultaneously
+		global ready_x
+		global ready_y
 
 		#get parameters
 		params = self.get_params(end_x, end_y)
@@ -276,10 +278,8 @@ class Printer():
 		while (not ready_x) or (not ready_y):
 			sleep(.1)
 
-		global ready_x
+		
 		ready_x = True
-
-		global ready_y
 		ready_y = True
 
 		
