@@ -9,9 +9,6 @@ import re
 class Motor():
 	def __init__(self, att_dict):
 		self.name = att_dict["name"]
-
-		print("init motor location", hex(id(self)))
-
 		self.dir_pin = att_dict["pins"]["dir"]
 		self.step_pin = att_dict["pins"]["step"]
 		self.mode_pins = (att_dict["pins"]["m0"],att_dict["pins"]["m1"],att_dict["pins"]["m2"])
@@ -158,6 +155,8 @@ class Motor():
 		#return number of pulses
 		return n*start_freq*self.cycle + 0.5*(n**2)*delta*self.cycle
 
+	def get_pos(self):
+		return self.pos
 
 	#move a single motor
 	def move(self, dist, sec, direct):
@@ -199,7 +198,6 @@ class Motor():
 			delta = drift + dist
 
 		self.pos += delta
-		print(self.name,hex(id(self.pos)))
 
 
 		i  = 0
@@ -224,7 +222,6 @@ class Printer():
 		#Initialize Motor Object
 		self.x = Motor(config_dict[0])
 		self.x.set_resolution('1/4')
-		print("init printer x",hex(id(self.x)))
 
 		self.y = Motor(config_dict[1])
 		self.pump = Motor(config_dict[2])
@@ -268,7 +265,7 @@ class Printer():
 		move_x.start()
 		move_y.start()
 		sleep(params[0][1])
-		print("printer x",hex(id(self.x.pos)))
+		print(self.x.get_pos())
 
 	def pump_off(self):
 		return
