@@ -89,7 +89,7 @@ class Motor():
 			print(end_delay)
 
 
-		print("start delay, end delay: %d, %d" % (start_delay, end_delay))
+		print("start delay, end delay: %f, %f" % (start_delay, end_delay))
 
 
 		#set time cycle to change delay time
