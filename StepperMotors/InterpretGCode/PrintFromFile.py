@@ -64,6 +64,10 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
+	#establish global ready_x and ready_y
+	ready_x = True
+	ready_y = True
+
 	run(printer, "../GCode/B_emoji.gcode")
 
 	gpio.cleanup()

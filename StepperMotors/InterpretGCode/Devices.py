@@ -156,6 +156,12 @@ class Motor():
 	#move a single motor
 	def move(self, dist, sec, direct):
 		#move motor a given distance in time (sec) in direction (direct)
+		if self.name == "x":
+			global ready_x
+			ready_x = False
+		elif self.name == "y":
+			global ready_y
+			ready_y = False
 
 		#return if time == 0 sec
 		if sec == 0:
@@ -199,6 +205,13 @@ class Motor():
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
+
+		if self.name == "x":
+			global ready_x
+			ready_x = True
+		elif self.name == "y":
+			global ready_y
+			ready_y = True
 			
 
 		
@@ -259,7 +272,16 @@ class Printer():
 		#run processes
 		move_x.start()
 		move_y.start()
-		sleep(params[0][1])
+		
+		while ! ready_x or ! ready_y:
+			sleep(.1)
+
+		global ready_x
+		ready_x = True
+
+		global ready_y
+		ready_y = True
+
 		
 		self.pos = [end_x, end_y]
 
@@ -279,6 +301,8 @@ class Printer():
 
 
 if __name__ == "__main__":
+	ready_x = True
+	ready_y = True
 
 	#remove warnings
 	gpio.setwarnings(False)
