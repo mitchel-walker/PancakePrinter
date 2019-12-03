@@ -15,6 +15,7 @@ class Motor():
 		self.calib = att_dict["calib"]
 		self.max_spd = att_dict["max_speed"]
 		self.curr_speed = 0
+		self.acc = att_dict["acceleration"]
 
 		#initialize pwm object
 		# self.initialize_pulses()
@@ -69,9 +70,9 @@ class Motor():
 		self.set_mode_pins()
 
 
-	def accelerate(self, end_speed, percent, time):
+	def accelerate(self, hold_speed, end_speed, time):
 		#return 0 if no acceleration is needed
-		if (-10 <= self.curr_speed - end_speed <= 10) or (time < 0.02):
+		if (-10 <= self.curr_speed - hold_speed <= 10) or (time < 0.02):
 			return 0
 
 		#determine start delay time
@@ -81,19 +82,17 @@ class Motor():
 			start_delay = self.calib/(abs(self.curr_speed)*200*self.get_step_size())
 
 		#determine end delay time
-		if end_speed == 0:
+		if hold_speed == 0:
 			end_delay = 0.
 		else:
-			end_delay = self.calib/(abs(end_speed)*200*self.get_step_size())
+			end_delay = self.calib/(abs(hold_speed)*200*self.get_step_size())
 
 
 		#set time cycle to change delay time
 		cycle = 0.01
 
 		#set change in delay time for each time cycle
-		delta = (end_delay-start_delay)*cycle/(time*percent)
-
-		print("delta: " + str(delta))
+		delta = (end_delay-start_delay)*cycle/(time*self.acc)
 
 		#initialize delay variable
 		delay = start_delay
@@ -147,7 +146,6 @@ class Motor():
 
 		#begin acceleration
 		acc_pulses = self.accelerate((dist/sec),.2,sec)
-		print(acc_pulses)
 
 
 		i  = 0
@@ -180,7 +178,6 @@ class Printer():
 		self.x = Motor(config_dict[0])
 		self.y = Motor(config_dict[1])
 		self.pump = Motor(config_dict[2])
-		self.acc = config_dict[3]["acceleration"]
 
 		#initial position
 		self.pos = [0.0, 0.0]
