@@ -16,16 +16,27 @@ def timer(length, delay):
 	print("actually turned for %f seconds" % stop)
 
 def time_while():
-	num_pulses = 100
+	num_pulses = 11
+	acc_pulses = 1
 	i  = 0
+	start_time = time()
 		while i < num_pulses-acc_pulses:
 			gpio.output(self.step_pin, gpio.HIGH)
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
 
+	return (time()-start_time)/10
+
 
 
 if __name__ == "__main__":
+	'''
 	delay = eval(input("Input delay time: "))
 	timer(10, delay)
+	'''
+	sm = 0
+	for i in range(10):
+		sm += time_while()
+
+	print(sm/10)
