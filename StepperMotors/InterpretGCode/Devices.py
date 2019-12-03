@@ -200,10 +200,14 @@ class Motor():
 			delta = drift - dist
 		else:
 			delta = drift + dist
-		
+		print("\n\n\n\n\n")
 		print(self.pos)
 
 		self.pos = self.pos + delta
+
+		print(self.pos)
+
+		print("\n\n\n\n\n")
 
 
 
