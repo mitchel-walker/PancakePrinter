@@ -262,7 +262,7 @@ class Printer():
 		move_x.start()
 		move_y.start()
 
-		sleep(sec)
+		sleep(params[0][1])
 		
 		self.pos = [end_x, end_y]
 
@@ -282,8 +282,6 @@ class Printer():
 
 
 if __name__ == "__main__":
-	ready_x = True
-	ready_y = True
 
 	#remove warnings
 	gpio.setwarnings(False)
