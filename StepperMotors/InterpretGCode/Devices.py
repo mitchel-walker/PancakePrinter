@@ -121,12 +121,15 @@ class Motor():
 		#set direction pin output
 		gpio.output(self.dir_pin, direct)
 
-		print(num_pulses)
-
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/(self.calib*2)
 		#set delay time
 		delay = sec/(num_pulses)
+
+
+		print(num_pulses)
+
+		
 
 		#begin acceleration
 		#
