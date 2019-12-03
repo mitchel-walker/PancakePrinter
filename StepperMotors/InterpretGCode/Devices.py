@@ -195,7 +195,9 @@ class Motor():
 		else:
 			delta = drift + dist
 
+		print(self.pos)
 		self.pos += delta
+		
 
 		i  = 0
 		while i < num_pulses-acc_pulses:
