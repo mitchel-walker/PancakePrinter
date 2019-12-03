@@ -9,15 +9,11 @@ import re
 
 def run(printer, gcd_file):
 	#run through the 6 command options and call each corresponding command
+
+	max_x = 0
+	max_y = 0
+	
 	for command in yield_commands(gcd_file):
-
-
-
-		max_x = 0
-		max_y = 0
-
-
-
 		print(command)
 		if len(command) == 0:
 			continue
