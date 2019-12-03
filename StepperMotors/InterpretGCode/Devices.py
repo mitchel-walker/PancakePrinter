@@ -142,7 +142,7 @@ class Motor():
 		# ACCELERATION
 		if (self.direction != -1) and (self.direction != direct):
 			#if motor must change direction, first set speed to zero
-			self.speed = 0
+			self.stop()
 
 		#set direction pin and accelerate to speed
 		gpio.output(self.dir_pin, direct)
