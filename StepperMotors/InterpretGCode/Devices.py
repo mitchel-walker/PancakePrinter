@@ -196,7 +196,7 @@ class Motor():
 			delta = drift + dist
 
 		self.pos += delta
-		print(self.name,id(self.pos))
+		print(self.name,hex(id(self.pos)))
 
 
 		i  = 0
@@ -220,7 +220,6 @@ class Printer():
 	def __init__(self, config_dict):
 		#Initialize Motor Object
 		self.x = Motor(config_dict[0])
-		print("printer",self.x)
 		self.x.set_resolution('1/4')
 
 		self.y = Motor(config_dict[1])
@@ -265,7 +264,7 @@ class Printer():
 		move_x.start()
 		move_y.start()
 		sleep(params[0][1])
-		print(id(self.x.pos))
+		print("x",hex(id(self.x.pos)))
 
 	def pump_off(self):
 		return
