@@ -39,6 +39,7 @@ if __name__ == "__main__":
 	timer(10, delay)
 	'''
 	gpio.setmode(gpio.BCM)
+	gpio.setwarnings(False)
 	
 	gpio.setup(21, gpio.OUT)
 
