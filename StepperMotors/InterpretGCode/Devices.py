@@ -121,10 +121,12 @@ class Motor():
 		#set direction pin output
 		gpio.output(self.dir_pin, direct)
 
+		print(num_pulses)
+
 		#set number of pulses
 		num_pulses = (dist*200*self.get_step_size())/(self.calib*2)
 		#set delay time
-		delay = sec/(num_pulses*2)
+		delay = sec/(num_pulses)
 
 		#begin acceleration
 		#
@@ -233,7 +235,7 @@ if __name__ == "__main__":
 	#Remove all whitespace characters
 	with open('config.json') as f:
 		text = re.sub(r"\s",'',f.read())
-	print(text)
+
 	config_dict = json.loads(text)
 
 
