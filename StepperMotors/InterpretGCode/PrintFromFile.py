@@ -27,6 +27,9 @@ def run(printer, gcd_file):
 			#first determine if command should be sent
 			x_cudist = x_cudist + (eval(command[1][1:]) - printer.pos[0]*scale_x)
 			y_cudist = y_cudist + (eval(command[2][1:]) - printer.pos[1]*scale_y)
+
+			print(x_cudist)
+			print(y_cudist)
 			
 
 			if (x_cudist >= min_dist) and (y_cudist >= min_dist):
