@@ -30,6 +30,7 @@ def run(printer, gcd_file):
 			
 
 			if (x_cudist >= min_dist) and (y_cudist >= min_dist):
+				print("*************************")
 				printer.go(eval(command[1][1:])/scale_x, eval(command[2][1:])/scale_y)
 				x_cudist = 0
 				y_cudist = 0
