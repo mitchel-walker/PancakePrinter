@@ -25,10 +25,10 @@ def run(printer, gcd_file):
 			continue
 		elif command[0] == "G00":
 			#first determine if command should be sent
-			x_cudist += (eval(command[1][1:]) - printer.pos[0])
+			x_cudist = x_cudist + (eval(command[1][1:]) - printer.pos[0])
 			y_cudist += (eval(command[2][1:]) - printer.pos[1])
 
-			print((eval(command[1][1:]) - printer.pos[0]))
+			print(x_cudist)
 			
 
 			if (x_cudist >= min_dist) and (y_cudist >= min_dist):
