@@ -64,6 +64,6 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	run(printer, "../GCode/Triangle.gcode")
+	run(printer, "../GCode/B_emoji.gcode")
 
 	gpio.cleanup()
