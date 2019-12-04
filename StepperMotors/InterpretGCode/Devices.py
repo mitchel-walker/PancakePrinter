@@ -213,7 +213,7 @@ class Motor():
 		gpio.output(self.dir_pin, 1)
 
 
-		delay = self.calib/(dist*200*self.get_step_size())
+		delay = self.calib/(self.max_spd*200*self.get_step_size())
 
 
 		while True:
