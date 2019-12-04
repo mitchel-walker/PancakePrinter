@@ -177,10 +177,12 @@ class Motor():
 		if (self.direction != -1) and (self.direction != direct):
 			#if motor must change direction, first set speed to zero
 			if self.direction == 1:
-				drift = self.stop()
+				#drift = self.stop()
+				pass
 				
 			else:
-				drift = -self.stop()
+				#drift = -self.stop()
+				pass
 				
 		
 
