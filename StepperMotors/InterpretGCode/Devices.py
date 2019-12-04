@@ -173,7 +173,7 @@ class Motor():
 		#set delay time
 		delay = sec/(num_pulses) - 0.0001
 
-		'''
+		
 		# ACCELERATION
 		drift = 0
 		if (self.direction != -1) and (self.direction != direct):
@@ -185,7 +185,7 @@ class Motor():
 			else:
 				#drift = -self.stop()
 				pass
-		'''
+		
 				
 		
 
