@@ -29,10 +29,12 @@ def run(printer, gcd_file):
 			x_cudist += eval(command[2][1:])
 
 			if x_cudist >= min_dist or y_cudist >= min_dist:
+				print(x_cudist)
+				print(y_cudist)
 				printer.go(eval(command[1][1:])/scale_x, eval(command[2][1:])/scale_y)
 				x_cudist = 0
 				y_cudist = 0
-				
+
 			continue
 		elif command[0] == "G4":
 			printer.motors_off()
