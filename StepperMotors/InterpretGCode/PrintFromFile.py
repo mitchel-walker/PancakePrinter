@@ -11,11 +11,11 @@ def run(printer, gcd_file):
 	#run through the 6 command options and call each corresponding command
 
 	#set x and y scale
-	scale_x = 3
-	scale_y = 3
+	scale_x = 2
+	scale_y = 2
 
 	#set minimum distance to send command to printer
-	min_dist = 5
+	min_dist = 8
 	x_cudist = 0
 	y_cudist = 0
 
