@@ -240,6 +240,8 @@ class Printer():
 		self.pump = Motor(config_dict[2])
 
 		self.pos = [0,0]
+		
+		self.pump_turn = None
 
 
 	def get_params(self, end_x,end_y):
@@ -286,6 +288,8 @@ class Printer():
 		self.pos = [end_x, end_y]
 
 	def pump_off(self):
+		if self.pump_turn == None:
+			return
 		self.pump_turn.terminate()
 
 	def pump_on(self):
