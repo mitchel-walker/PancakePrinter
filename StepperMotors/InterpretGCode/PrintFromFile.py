@@ -15,7 +15,7 @@ def run(printer, gcd_file):
 	scale_y = 3
 
 	#set minimum distance to send command to printer
-	min_dist = 10
+	min_dist = 1
 	x_cudist = 0
 	y_cudist = 0
 
