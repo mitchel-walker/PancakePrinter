@@ -171,16 +171,18 @@ class Motor():
 		#set delay time
 		delay = sec/(num_pulses)
 
-		'''
+		
 		# ACCELERATION
 		drift = 0
 		if (self.direction != -1) and (self.direction != direct):
 			#if motor must change direction, first set speed to zero
 			if self.direction == 1:
-				drift = self.stop()
+				#drift = self.stop()
+				pass
 			else:
-				drift = -self.stop()
-		'''
+				#drift = -self.stop()
+				pass
+		
 
 		#set direction pin and accelerate to speed
 		gpio.output(self.dir_pin, direct)
