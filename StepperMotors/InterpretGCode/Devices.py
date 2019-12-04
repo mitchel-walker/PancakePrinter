@@ -289,7 +289,7 @@ class Printer():
 		self.pump_turn.terminate()
 
 	def pump_on(self):
-		self.pump_turn = Process(target = self.turn)
+		self.pump_turn = Process(target = self.pump.turn)
 
 	def motors_off(self):
 		#accelerate each motor to speed 0
