@@ -210,7 +210,7 @@ class Motor():
 
 	def turn(self):
 		#for the pump to turn indefinitely
-		gpio.output(self.dir_pin, 1)
+		gpio.output(self.dir_pin, 0)
 
 
 		delay = self.calib/(self.max_spd*200*self.get_step_size())
