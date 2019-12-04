@@ -10,15 +10,29 @@ import re
 def run(printer, gcd_file):
 	#run through the 6 command options and call each corresponding command
 
+	#set x and y scale
 	scale_x = 3
 	scale_y = 3
+
+	#set minimum distance to send command to printer
+	min_dist = 10
+	x_cudist = 0
+	y_cudist = 0
 
 	for command in yield_commands(gcd_file):
 		print(command)
 		if len(command) == 0:
 			continue
 		elif command[0] == "G00":
-			printer.go(eval(command[1][1:])/scale_x, eval(command[2][1:])/scale_y)
+			#first determine if command should be sent
+			x_cudist += eval(command[1][1:])
+			x_cudist += eval(command[2][1:])
+
+			if x_cudist >= min_dist or y_cudist >= min_dist:
+				printer.go(eval(command[1][1:])/scale_x, eval(command[2][1:])/scale_y)
+				x_cudist = 0
+				y_cudist = 0
+				
 			continue
 		elif command[0] == "G4":
 			printer.motors_off()
