@@ -312,7 +312,7 @@ if __name__ == "__main__":
 	gpio.setup(output_pins,gpio.OUT)
 
 	printer = Printer(config_dict)
-	printer.x.set_resolution('1/8')
+	printer.x.set_resolution('1/32')
 
 	printer.x.move(100,4,1)
 	printer.x.move(100,4,0)
