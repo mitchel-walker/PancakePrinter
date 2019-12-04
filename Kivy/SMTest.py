@@ -26,6 +26,14 @@ inst = PrintFromFile()
 inst.setup()
 
 
+# Declare both screens
+class MenuScreen(Screen):
+	pass
+
+class SettingsScreen(Screen):
+	pass
+
+
 
 Builder.load_string("""
 <MenuScreen>:
@@ -36,36 +44,52 @@ Builder.load_string("""
             	size: self.size
 
 		Button:
-			text: 'Go to Settings'
-			on_press: root.manager.current = 'settings'
-			pos_hint: {'top':0.9, 'right':0.9}
+			on_press: app.print('../StepperMotors/GCode/B.gcode')
+			pos_hint: {'top':.8, 'right':0.3}
 			size_hint: .1,.1
+			Image:
+				source: 'B.png'
+				pos:self.parent.x, self.parent.y
+				allow_stretch: True
+
 		Button:
-			text: 'Quit'
+			on_press: app.print('../StepperMotors/GCode/Longhorn.gcode')
+			pos_hint: {'top':0.8, 'right':0.9}
+			size_hint: .1,.1
+			Image:
+				source: 'Longhorn.png'
+				pos:self.parent.x, self.parent.y
+				allow_stretch: True
+		Button:
+			on_press: app.print('../StepperMotors/GCode/Soccer.gcode')
+			pos_hint: {'top':0.4, 'right':0.9}
+			size_hint: .1,.1
+			Image:
+				source: 'Soccer.png'
+				pos:self.parent.x, self.parent.y
+				allow_stretch: True
+		Button:
+			on_press: app.print('../StepperMotors/GCode/smiley3.gcode')
+			pos_hint: {'top':.4, 'right':0.3}
+			size_hint: .1,.1
+			Image:
+				source: 'smiley.png'
+				pos:self.parent.x, self.parent.y
+				allow_stretch: True
+		Button:
 			on_press: assert False
 			pos_hint: {'right':1}
 			size_hint: .1,.1
-
-
-<SettingsScreen>:
-	BoxLayout:
-		Button:
-			text: 'My settings button'
-			on_press: run_me
-		Button:
-			text: 'Back to menu'
-			on_press: root.manager.current = 'menu'
+			Image:
+				source: 'powerbutton.png'
+				y: self.parent.y
+				x: self.parent.x
+				size_hint: .1,.1
+				
+	            allow_stretch: True
 			
 """)
 
-
-# Declare both screens
-class MenuScreen(Screen):
-	pass
-
-class SettingsScreen(Screen):
-	def run_me(self):
-		inst.run("B_emoji.gcode")
 	
 
 # Create the screen manager
@@ -77,6 +101,9 @@ class PancakesApp(App):
 
 	def build(self):
 		return sm
+
+	def print(self, file):
+		print(file)
 
 if __name__ == '__main__':
 	PancakesApp().run()
