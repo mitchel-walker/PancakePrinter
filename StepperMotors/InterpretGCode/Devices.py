@@ -156,8 +156,6 @@ class Motor():
 	#move a single motor
 	def move(self, dist, sec, direct):
 		#move motor a given distance in time (sec) in direction (direct)
-		print("expected time: %f" % sec)
-
 		start_time = time()
 
 		#return if time == 0 sec
@@ -209,9 +207,6 @@ class Motor():
 			sleep(delay)
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
-
-		print("actual time: %s" % (time() - start_time))
-			
 
 		
 
