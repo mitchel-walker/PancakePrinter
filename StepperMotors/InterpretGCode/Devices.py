@@ -272,7 +272,8 @@ class Printer():
 		move_x.start()
 		move_y.start()
 
-		sleep(params[0][1])
+		move_x.join()
+		move_y.join()
 		
 		self.pos = [end_x, end_y]
 
