@@ -208,6 +208,19 @@ class Motor():
 			gpio.output(self.step_pin, gpio.LOW)
 			i+= 1
 
+	def turn(self):
+		#for the pump to turn indefinitely
+		self.direction(self.dir_pin, 1)
+
+
+		delay = self.calib/(dist*200*self.get_step_size())
+
+
+		while True:
+			gpio.output(self.step_pin, gpio.HIGH)
+			sleep(delay)
+			gpio.output(self.step_pin, gpio.LOW)
+
 		
 
 
@@ -273,10 +286,10 @@ class Printer():
 		self.pos = [end_x, end_y]
 
 	def pump_off(self):
-		return
+		self.pump_turn.terminate()
 
 	def pump_on(self):
-		return
+		self.pump_turn = Process(target = self.turn)
 
 	def motors_off(self):
 		#accelerate each motor to speed 0

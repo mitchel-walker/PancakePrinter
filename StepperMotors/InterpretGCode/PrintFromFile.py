@@ -28,8 +28,6 @@ def run(printer, gcd_file):
 			x_cudist = x_cudist + (eval(command[1][1:]) - printer.pos[0]*scale_x)
 			y_cudist = y_cudist + (eval(command[2][1:]) - printer.pos[1]*scale_y)
 
-			
-
 			if (abs(x_cudist) >= min_dist) and (abs(y_cudist) >= min_dist):
 				print("*************************")
 				printer.go(eval(command[1][1:])/scale_x, eval(command[2][1:])/scale_y)
@@ -81,6 +79,6 @@ if __name__ == "__main__":
 
 	printer = Printer(config_dict)
 
-	run(printer, "../GCode/Longhorn.gcode")
+	run(printer, "../GCode/Pump.gcode")
 
 	gpio.cleanup()
